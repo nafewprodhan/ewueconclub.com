@@ -1,0 +1,71 @@
+.form-template {
+    width: 100%;
+    position: relative;
+    top: 7rem;
+    z-index: 1;
+    background: transparent;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-template::after {
+    z-index: -1;
+    opacity: 0.1;
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/resources/images/pattern.jpg);
+  }
+  
+  .form-template > .form-card {
+    position: relative;
+    border-radius: 40px !important;
+    top: 5rem;
+    margin-bottom: 5rem;
+  }
+  
+
+
+
+.main-form {
+  padding: 2rem !important;
+}
+
+.form-card {
+    background: var(--primary-theme-tr-color);
+    background: #ebebeb;
+}
+
+.input-grp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input-label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: black;
+}
+
+/* .form-input {
+  height: 3rem !important;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0.7px solid #929292;
+} */
+
+@media screen and (max-width: 650px) {
+  .form-template > .form-card {
+  }
+
+  .main-form {
+    padding: 0.5rem 0 !important;
+  }
+}

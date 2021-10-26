@@ -1,0 +1,29 @@
+:root {
+
+    --gradient-BG-color: linear-gradient(45deg, rgba(196, 0, 167, 0.623) 5%, rgba(9, 46, 229, 0.596) 55%, rgba(0, 213, 255, 0.651) 100%);
+
+    /* gradient-section */
+
+    --primary-theme-dark-color: linear-gradient(45deg, rgb(196, 0, 167) 5%, rgb(9, 46, 229) 55%, rgb(0, 213, 255) 100%);
+    --primary-theme-tr-color:  linear-gradient(45deg, rgba(196, 0, 167, 0.623) 5%, rgba(9, 46, 229, 0.596) 55%, rgba(0, 213, 255, 0.651) 100%);
+
+    --secondary-theme-dark-color: #920025;
+    --secondary-theme-light-color: #f6e1ff;
+
+    --primary-lighter-text-color: #ffffff;
+    --primary-darker-text-color: #230041;
+
+    --primary-event-sec-BG-color: linear-gradient(45deg, rgba(196, 0, 167, 0.623) 5%, rgba(9, 46, 229, 0.596) 55%, rgba(0, 213, 255, 0.651) 100%);
+    --primary-blog-sec-BG-color: linear-gradient(45deg,rgba(9, 46, 229, 0.753) 55%, rgba(0, 213, 255, 0.918) 100%);  
+
+    --primary-white-btn-BG: #ffffff;
+    --primary-dark-btn-BG: linear-gradient(45deg, rgba(196, 0, 167, 0.623) 5%, rgba(9, 46, 229, 0.596) 55%, rgba(0, 213, 255, 0.651) 100%);
+
+
+    /* logo-color */
+
+    --logo-main-color: #064970 !important;
+    --logo-secondary-color: #ec1e3e !important;
+
+
+}

@@ -1,0 +1,356 @@
+
+p, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.custom-nav {
+    background: -webkit-linear-gradient(45deg, #00115f, #0058fc) !important;
+}
+
+#all-things {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* body {
+    background-color: #0e1014;
+} */
+
+#all-things {
+    position: relative;
+    top: 5rem !important;
+    height: auto;
+}
+
+.flex-things {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#toggle-list-things-container {
+    width: 26%;
+    height: 100%;
+    background-color: #f5f5f5;
+    min-width: 250px !important;
+    /* margin-right: 10px !important; */
+    position: sticky;
+    top: 5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+}
+
+.profile-edit-btn-a {
+    margin-top: 1.7rem;
+    margin-bottom: 0.8rem;
+    text-decoration: none;
+    padding: 0.2rem 0.4rem;
+    border-radius: 10px;
+    background: #ace8ff;
+    color: #003b38;
+}
+
+.profile-img {
+    width: 88%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid blue;
+}
+
+.profile-type {
+    width: 100%;
+    text-align: center;
+    padding: 0.3rem 0.8rem;
+    background: var(--primary-theme-tr-color);
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: "Volte Semibold";    
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+}
+
+.profile-name {
+    font-family: 'Volte Semibold';
+    font-size: 1.7rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-headline {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    text-align: center;
+}
+
+.profile-institution, .profile-department {
+    color: black;
+}
+
+.profile-blood-group {
+    font-family: "Volte Semibold";
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    color: red;
+    font-size: 1.1rem;
+}
+
+.profile-location {
+    margin-bottom: 0.7rem;
+}
+
+.profile-social-link {
+    display: flex;
+    gap: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-send-email-btn {
+    font-family: "Volte Semibold";
+    font-size: 1.2rem;
+}
+
+#items-container {
+    margin: 0;
+    padding: 1rem;
+    padding-top: 0;
+    height: 100%;
+    width: 70%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.first {
+    margin-top: 0 !important;
+}
+
+.profile-desc-section {
+    margin: 2rem 0;
+}
+
+.profile-header {
+    font-family: "Volte Semibold";
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.sec-hr {
+    width: 4.5rem;
+    height: 0.3rem;
+    background-image: var(--gradient-BG-color);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+}
+
+.profile-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 500;
+    color: black;
+    text-align: justify;
+    padding: 0.3rem 0.5rem;
+}
+
+.top-skills-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+    padding: 0.3rem 0.5rem;
+}
+
+.top-skills-header {
+    width: 15%;
+    font-family: "Volte Semibold";
+    font-size: 1.2rem;
+    color: rgb(0, 39, 13);
+    padding: 0.2rem 0.3rem;
+    background-color: rgb(194, 255, 212);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.top-skills-desc {
+    width: 80%;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.other-skills-container {
+    display: flex;
+    padding: 0.3rem 0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.other-skill {
+    padding: 0.2rem 0.4rem;
+    background-color: rgb(198, 253, 255);
+    color: rgb(0, 61, 31);
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+
+.profile-show-experience-container {
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.profile-experience-headline {
+    font-size: 1.1rem;
+    font-family: "Volte Semibold";
+    color: black;
+}
+
+.profile-experience-company {
+    font-weight: 600;
+}
+
+.vip-user-label-container {
+    height: auto;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--primary-theme-tr-color);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.vip-stars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vip-stars i {
+    color: white;
+}
+
+.fa-1x {
+    color: rgb(255, 225, 169) !important;
+}
+
+.vip-member-type {
+    color: white;
+    font-family: "Volte Semibold";
+    font-size: 1.7rem;
+}
+
+.vip-member-club {
+    color: white;
+    font-weight: bold;
+}
+
+.vip-club-session {
+    color: white;
+
+}
+
+@media screen and (max-width: 992px) {
+
+    #all-things {
+        top: 1rem !important;
+
+    }
+
+    .flex-things {
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        gap: 3rem;
+    }
+
+    .vip-user-label-container {
+        margin-top: 4rem;    
+    }
+
+    #toggle-list-things-container {
+        width: 100%;
+        padding: 1rem;  
+        position: relative;  
+    }
+
+    #items-container {
+        width: 100%;
+        padding: 1rem;    
+    }
+
+    .vip-user-label-container {
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top-skills-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .top-skills-header {
+        width: 50%;
+    }
+    
+    .top-skills-desc {
+        width: 100%;
+    }
+
+}
+
+.top-skills-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-skills-header {
+    width: 50%;
+    background: none;
+    text-align: left;
+    padding-left: 0;
+}
+
+.top-skills-desc {
+    width: 100%;
+}
+
+.add-edit-btn {
+    background: #f5f5f5;
+    padding: 0.4rem 0.7rem;
+}
+
+.skills-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.skill-edit {
+    width: 17%;
+}

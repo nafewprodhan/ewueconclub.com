@@ -1,0 +1,253 @@
+.gap-helper {
+    height: 6rem;
+    width: 100%;
+    background-color: #ececec;
+}
+
+body {
+    background-color: #ececec;
+}
+
+#all-things {
+    position: relative;
+    top: 5rem !important;
+    height: auto;
+}
+
+.flex-things {
+    position: relative;
+}
+
+#toggle-list-things-container {
+    min-width: 250px !important;
+    margin-right: 10px !important;
+    position: relative;
+    padding: 0;
+}
+
+#items-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+ul#list-items {
+    position: sticky;
+    top: 5rem;
+    list-style: none;
+    height: 80vh;
+    overflow-y: scroll;
+    border-radius: 4px;
+    border: 1px solid #bbbbbb;
+    margin: 0;
+    padding: 0.6rem 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#toggler-item {
+    background: linear-gradient(45deg, rgb(9, 46, 229) 35%, rgb(0, 213, 255) 100%);
+    font-family: "Volte Semibold";
+    color: white;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+}
+
+.list-item {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    background-color: white;
+    margin: 0;
+    border-top: 1px solid #bbbbbb;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: var(--primary-dark-text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.6rem 0.7rem;
+}
+
+/* #toggler-item {
+    margin-top: 0;
+    background: linear-gradient(45deg, rgb(9, 46, 229) 35%, rgb(0, 213, 255) 100%);
+    font-family: "Volte Semibold";
+    color: white;
+    font-size: 1.45rem;
+    letter-spacing: 1px;
+} */
+
+.item-active, .list-item:hover {
+    background-color: #e4e4e4;
+}
+
+.single-item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 0.4rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #bbbbbba1;
+    border-radius: 4px;
+    text-decoration: none !important;
+    color: var(--primary-darker-text-color);
+}
+
+.single-item-container img {
+    width: 30%;
+    height: 100%;
+}
+
+.item-info-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title {
+    margin: 0;
+    font-family: "Volte Semibold";
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    background: var(--primary-theme-dark-color);
+    background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: -moz-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: var(--primary-theme-dark-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.item-extra-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.item-timing-label {
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    color: #b3011e;
+    background-color: #ffdada;
+    font-weight: bold;
+    margin: 0;
+}
+
+.upcoming-label {
+    color: white;
+    font-weight: bolder;
+    background: var(--primary-theme-tr-color);
+}
+
+.item-date {
+    margin: 0;
+    color: rgb(39, 39, 39);
+    font-weight: bold;
+}
+
+.item-desription {
+    margin: 0;
+    margin-top: 0.7rem;
+    color: black;
+    text-align: justify;
+}
+
+.item-tags {
+    margin-top: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.item-tag {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    background-color: rgb(194, 255, 255);
+    color: #005f63;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 992px) {
+    .flex-things {
+        flex-direction: column;
+        gap: 3rem;
+        margin: 0.3rem;
+    }
+
+    ul#list-items {
+        height: 250px;
+    }
+
+    .single-item-container {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .single-item-container img {
+        width: 100%;
+    }
+
+    .item-title {
+        font-size: 1.35rem;
+    }
+
+    .item-info-container {
+        width: 100%;
+    }
+}
+
+.search-form {
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.17) 0px 30px 60px -30px !important;
+
+}
+
+.input-search, .search-submit {
+    padding: 0.65rem 0.8rem;
+}
+
+.input-search {
+    width: 75%;
+    border-top-left-radius: 8px;    
+    border-bottom-left-radius: 8px;
+    border: 1px solid #bbbbbb;
+    border-right: none;
+}
+
+.input-search:focus {
+    outline: none;
+    border: 1px solid #092ee5 !important;
+}
+
+.search-submit {
+    font-family: "Volte Semibold";
+    width: 25%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid #092ee5;
+    border-left: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    background: linear-gradient(45deg, rgb(9, 46, 229) 35%, rgb(0, 213, 255) 100%);
+}

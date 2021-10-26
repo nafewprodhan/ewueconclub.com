@@ -1,0 +1,66 @@
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/nav.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light custom-nav">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/ewu-econ-club-logo.png' %}" alt="" srcset="">
+        </a>
+        <button class="navbar-toggler me-auto custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse nav-info-container m-auto" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-first active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notice</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Event</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Guardian
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Moderators</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Executive Committee</a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link login-nav" href="#"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                    </li>
+                </ul>
+        </div>
+        <a class="nav-link login-nav d-md-block mob-login-right-pos d-lg-none" href="#"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+    </div>
+</nav>
+
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

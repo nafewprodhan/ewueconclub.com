@@ -1,0 +1,237 @@
+body {
+    background-color: #ececec;
+}
+
+.flex-single-event-row {
+    position: relative;
+    top: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#event-small-info-container {
+    position: sticky;
+    top: 5rem;
+    background: white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 75vh;
+    border: 1px solid #bbbbbb;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    /* overflow: hidden; */
+}
+
+.s-event-sm-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.sm-ev-header {
+    padding: 0.5rem 0.9rem;
+    font-size: 1.2rem;
+    font-family: "Volte Semibold";
+    background: #ececec;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.sm-time-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    gap: 1rem;
+    margin: 1rem 0.5rem;
+    font-size: 1rem;
+    color: rgb(22, 22, 22);
+}
+
+.sm-date, .sm-clock {
+    margin: 0;
+    color: rgb(41, 41, 41);
+    /* text-transform: uppercase;
+    background: #C400A7; */
+    /* background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: -moz-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.sm-register-btn-a {
+    margin: 0 1.5rem;
+    padding: 0.5rem 0.4rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: "Volte Semibold";
+    color: white;
+    /* background: linear-gradient(90deg, rgb(9, 46, 229) 55%, rgb(0, 213, 255) 100%);; */
+    border-radius: 30px;
+    background: var(--primary-theme-tr-color);
+    text-align: center;
+}
+
+.sm-event-registered-num, .sm-event-location {
+    margin-top: 1rem;
+    /* font-family: "Volte Semibold";
+    text-transform: uppercase;
+    background: #C400A7;
+    background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: -moz-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    color: black;
+    text-align: center;
+}
+
+#event-details-info-container {
+    background: white;
+    border: 1px solid #bbbbbb;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sm-event-location {
+    margin-bottom: 1rem;
+}
+
+.s-event-name {
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--primary-theme-tr-color);
+    color: white;
+    font-family: "Volte Semibold";
+    font-size: 2.1rem;
+}
+
+
+.s-event-main-img {
+    padding: 1rem;
+}
+
+.s-event-description {
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: justify;
+    line-height: 1.9;
+    color: black;
+}
+
+.comment-row {
+    position: relative;
+    top: 9rem;
+}
+
+.comment-column {
+    margin-left: auto;
+    padding: 0;
+}
+
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment-event {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.comments-btn {
+    padding: 0.6rem 1rem;
+    background: var(--primary-theme-tr-color);
+    font-family: "Volte Semibold";
+    font-size: 1.3rem;
+    color: white;
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+}
+
+.comment-show-container {
+    margin: 3rem 0;
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ind-comment-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:  100%;
+}
+
+.cmt-info-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.cmt-prof-avator {
+    width: 80px;
+    height: 80px;
+    min-width: 70px;
+    min-height: 70px;
+    border-radius: 50%;
+    border: 2 px solid teal;
+}
+
+.cmt-prof-name {
+    color: teal;
+    font-family: "Volte Semibold";
+    font-size: 1.3rem;
+}
+
+.glider-contain {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.glider-img {
+    max-width: 70%;
+    max-height: 35%;
+}
+
+.glider-con-btn {
+    color: black;
+    background-color: rgba(235, 235, 235, 0.815);
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .flex-single-event-row {
+        gap: 2rem;
+    }
+
+    #event-small-info-container {
+        position: relative;
+        top: 0;
+    }
+
+    .comment-row {
+        margin: 0 0.2rem;
+    }
+}

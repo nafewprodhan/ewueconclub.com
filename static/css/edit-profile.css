@@ -1,0 +1,44 @@
+.form-template {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-template::after {
+    z-index: -1;
+    opacity: 0.1;
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/resources/images/pattern.jpg);
+  }
+  
+  .form-template > .form-card {
+    position: relative;
+    top: 5rem;
+    padding: 3rem 4rem;
+    width: 95%;
+    max-width: 65rem;
+  }
+  
+  @media screen and (min-width: 650px) {
+    .form-template > .form-card {
+      padding: 5rem 8rem;
+      width: 95%;
+      max-width: 65rem;
+    }
+  }
+
+  .form-card {
+      background-color: #f7f7f7;
+      
+  }
