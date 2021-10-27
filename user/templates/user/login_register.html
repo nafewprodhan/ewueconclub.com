@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
+
+    <section class="form-template">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-10 col-sm-11 m-auto form-card">
+                    <form action="" class="main-form" method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="login-username" class="form-label form-input-label">Username</label>
+                            <input type="text" class="form-control form-control-md" id="login-username" name="username" placeholder="Enter your username...">
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label form-input-label">Password</label>
+                            <input type="password" class="form-control form-control-md" id="login-password" name="password" placeholder="••••••••">
+                        </div>
+
+                        <div class="log-forget d-flex justify-content-between align-items-center mt-3">
+                            <input type="submit" style="color: white;" class="cstm-btn" value="Login">
+                            <a class="forgot-pass" href="">Forgot password</a>
+                        </div>
+                        
+                        <p style="margin-top: 2rem; text-align: center;">Don't have an account? <a href=""><b> Sign Up</b></a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

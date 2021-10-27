@@ -1,3 +1,7 @@
+body {
+  background-color: #f0f0f0;
+}
+
 .form-template {
     width: 100%;
     position: relative;
@@ -20,27 +24,24 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: url(/resources/images/pattern.jpg);
   }
   
-  .form-template > .form-card {
+  .form-card {
     position: relative;
-    border-radius: 40px !important;
-    top: 5rem;
-    margin-bottom: 5rem;
+    margin: 0.5rem !important;
+    max-width: 500px !important;
+    border-top: 6px solid var(--logo-main-color);
+    border-radius: 15px !important;
+    background: #ffffff !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
   }
   
-
-
 
 .main-form {
+  margin: 0 auto;
   padding: 2rem !important;
 }
 
-.form-card {
-    background: var(--primary-theme-tr-color);
-    background: #ebebeb;
-}
 
 .input-grp {
   display: flex;
@@ -49,9 +50,9 @@
 }
 
 .form-input-label {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: black;
+  font-size: 1.2rem;
+  font-family: "Volte Medium";
+  color: var(--logo-main-color);
 }
 
 /* .form-input {
@@ -61,10 +62,30 @@
   border: 0.7px solid #929292;
 } */
 
-@media screen and (max-width: 650px) {
-  .form-template > .form-card {
-  }
+.cstm-btn {
+  padding: 0.4rem 1.2rem !important;
+  font-size: 1.2rem;
+  font-family: "Volte Medium";
+  background-color: #ec1e3e;
+  border: 1px solid white;
+  border-radius: 7px;
+  color: #ffffff !important;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
 
+
+.cstm-btn:hover {
+  background-color: white;
+  color: #ec1e3e !important;
+  border: 1px solid #ec1e3e !important;
+}
+
+.forgot-pass {
+  color: #ec1e3e !important;
+}
+
+@media screen and (max-width: 650px) {
   .main-form {
     padding: 0.5rem 0 !important;
   }

@@ -7,3 +7,17 @@
 body {
     font-family: 'Volte Regular', sans-serif;
 }
+
+.cstm-btn {
+    padding: 0.4rem 1.2rem !important;
+    background-color: #ec1e3e;
+    border: 1px solid white;
+    border-radius: 7px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.cstm-btn:hover {
+    background-color: white;
+    color: #ec1e3e;
+}
