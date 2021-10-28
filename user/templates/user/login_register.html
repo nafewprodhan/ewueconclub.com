@@ -11,6 +11,37 @@
 
 {% block content %}
 
+    {% if page == 'register' %}
+
+    <section class="form-template">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-10 col-sm-11 m-auto form-card">
+                    <form action="" class="main-form" method="POST">
+                        {% csrf_token %}  
+
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label for="formInput#text" class="form-label form-input-label">{{field.label}}</label>
+                            {{field}}
+
+                            {% for error in field.errors %}
+                            <p style="color: red;">{{error}}</p>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                        
+                        <input type="submit" style="color: white;" class="cstm-btn" value="Sign Up">
+                        <p style="margin-top: 2rem; text-align: center;">Already have an account? <a href="{% url 'login' %}"><b> Login</b></a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% else %}
+
+
     <section class="form-template">
         <div class="container">
             <div class="row justify-content-center">
@@ -33,13 +64,15 @@
                             <a class="forgot-pass" href="">Forgot password</a>
                         </div>
                         
-                        <p style="margin-top: 2rem; text-align: center;">Don't have an account? <a href=""><b> Sign Up</b></a></p>
+                        <p style="margin-top: 2rem; text-align: center;">Don't have an account? <a href="{% url 'register' %}"><b> Sign Up</b></a></p>
                     </form>
                 </div>
             </div>
         </div>
 
     </section>
+
+    {% endif %}
 
 {% endblock content %}
 
