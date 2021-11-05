@@ -37,6 +37,17 @@
           linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
           linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
       }      
+
+      [type="date"] {
+        background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+      }
+      [type="date"]::-webkit-inner-spin-button {
+        display: none;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+      }
+
 </style>
 {% endblock head %}
 
@@ -45,8 +56,9 @@
 {% block content %}
 <section class="form-template">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-10 col-sm-11 m-auto form-card">
+        <div style="margin: 0.3rem;" class="row justify-content-center">
+            <div style="padding: 0; border:none; overflow:hidden;" class="col-lg-6 col-md-10 col-sm-11 m-auto form-card">
+                <h1 style="color:white; text-align:center; padding: 0.5rem 0; background-color: #064970">{{form_header}}</h1>
                 <form action="" class="main-form" method="POST" enctype="multipart/form-data" >
                     {% csrf_token %}  
 

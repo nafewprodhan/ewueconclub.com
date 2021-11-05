@@ -1,0 +1,213 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/account.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
+
+<section id="all-things" class="container">
+    <section class="row flex-things">
+        <div id="toggle-list-things-container" class="">
+            <a href="{% url 'edit-account' %}" class="profile-edit-btn-a"><i class="fa-solid fa-user-pen"></i> Edit profile</a>
+            <img src="{{ profile.profile_image.url }}" alt="" class="img-fluid profile-img">
+            <p class="profile-type">{{profile.std_alum}}</p>
+            <h1 class="profile-name">{{profile.name}}</h1>
+            <p class="profile-headline">{{profile.headline}}</p>
+
+            <p class="profile-institution">{{profile.institution}}</p>
+            <p class="profile-department">{{profile.department}}</p>
+
+            <p class="profile-blood-group"><i class="fa-solid fa-hand-holding-heart"></i> Blood Group: {{profile.blood_group}}</p>
+            <p class="profile-location"><i class="fa-solid fa-location-dot"></i> {{profile.location}}</p>
+
+
+            <div class="profile-social-link">
+                <a href="{{ profile.social_linkedin }}" class="social-link-ind"><i class="fa-brands fa-facebook-square"></i></a>
+                <a href="{{ profile.social_facebook }}" class="social-link-ind"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+
+            <a href="mailto:{{ profile.email }}" id="cstm-btn"><i class="fa-solid fa-envelope"></i> Send email</a>
+        </div>
+    
+        <div id="items-container" class="">
+            {% for ec in ec_container %}
+            {% if ec.mod_check %}
+            <div style="background-color: #ec1e3e !important;" class="vip-user-label-container">
+                <div class="vip-stars">
+                    <i class="fa-solid fa-star fa-1x"></i>
+                    <i class="fa-solid fa-star fa-2x"></i>
+                    <i class="fa-solid fa-star fa-1x"></i>
+                </div>
+                
+                <div class="vip-members-details">
+                    {% if ec.moderator_one.id == request.user.profile.id %}
+                    <p class="vip-member-type">Moderator</p>
+                    {% endif %}
+
+                    {% if ec.moderator_two.id == request.user.profile.id %}
+                    <p class="vip-member-type">Moderator</p>
+                    {% endif %}
+
+                    {% if ec.moderator_three.id == request.user.profile.id %}
+                    <p class="vip-member-type">Moderator</p>
+                    {% endif %}
+
+                    <p class="vip-member-club">East West University Economics Club</p>
+                    <p class="vip-club-session">{{ec.title}}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="vip-user-label-container">
+                <div class="vip-stars">
+                    <i class="fa-solid fa-star fa-1x"></i>
+                    <i class="fa-solid fa-star fa-2x"></i>
+                    <i class="fa-solid fa-star fa-1x"></i>
+                </div>
+                
+                <div class="vip-members-details">
+                    {% if ec.president.id == request.user.profile.id %}
+                    <p class="vip-member-type">President</p>
+                    {% endif %}
+
+                    {% if ec.vice_president.id == request.user.profile.id %}
+                    <p class="vip-member-type">Vice President</p>
+                    {% endif %}
+
+                    {% if ec.general_secretary.id == request.user.profile.id %}
+                    <p class="vip-member-type">General Secretary</p>
+                    {% endif %}
+
+                    {% if ec.joint_secretary.id == request.user.profile.id %}
+                    <p class="vip-member-type">Joint Secretary</p>
+                    {% endif %}
+
+                    {% if ec.treasurer.id == request.user.profile.id %}
+                    <p class="vip-member-type">Treasurer</p>
+                    {% endif %}
+
+                    {% if ec.event_coordinator.id == request.user.profile.id %}
+                    <p class="vip-member-type">Event Coordinator</p>
+                    {% endif %}
+
+                    {% if ec.head_of_logistics.id == request.user.profile.id %}
+                    <p class="vip-member-type">Head of Logistics</p>
+                    {% endif %}
+
+                    <p class="vip-member-club">East West University Economics Club</p>
+                    <p class="vip-club-session">{{ec.title}}</p>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+
+            <div class="profile-desc-section first">
+                <p class="profile-header">About me</p>
+                <div class="sec-hr"></div>
+                <p class="profile-desc">{{profile.about_yourself}}</p>
+            </div>
+
+            <div class="profile-desc-section">
+                <div class="profile-experience">
+                    <div class="sccount-header-container d-flex justify-content-between align-items-center">
+                        <p class="profile-header">Experience</p>
+                        <a href="{% url 'create-experience' %}" class="profile-edit-btn-a m-0 add-edit-btn"><i class="fa-solid fa-plus"></i> Add experience</a>
+                    </div>                        
+                    <div class="sec-hr"></div>
+                    
+                    {% for experience in experiences %}
+                    <div class="w-100 d-inline-flex justify-content-between align-items-center whole-info-container">
+                        <div style="width: 70%;" class="info-part profile-show-experience-container">
+                            <p class="profile-experience-headline">{{experience.headline}}</p>
+                            <p class="profile-experience-company">{{experience.company_name}}</p>
+                            
+                            {% if experience.present == 'y' %}
+                            <p class="profile-experience-date">{{experience.start_date}} - Present</p>
+                            {% else %}
+                            <p class="profile-experience-date">{{experience.start_date}} - {{experience.end_date}}</p>
+                            {% endif %}
+                            <p class="profile-experience-location mb-2">{{experience.location}}</p>
+                            <p style="text-align: justify;" class="profile-experience-description">{{ experience.description }}</p>
+                        </div>
+
+                        <div style="width: 25%; display:flex; justify-content:flex-end; gap:0.3rem" class="info-edit-delete">
+                            <a href="{% url 'update-experience' experience.id %}" class="profile-edit-btn-a m-0"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="{% url 'delete-experience' experience.id %}?next=/account" class="profile-edit-btn-a m-0"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+
+            <div class="profile-desc-section">
+                <div class="profile-experience">
+                    <div class="sccount-header-container d-flex justify-content-between align-items-center">
+                        <p class="profile-header">Education</p>
+                        <a href="{% url 'create-education' %}" class="profile-edit-btn-a m-0 add-edit-btn"><i class="fa-solid fa-plus"></i> Add education</a>
+                    </div>
+                    <div class="sec-hr"></div>
+
+                    {% for education in educations %}
+                    <div class="w-100 d-inline-flex justify-content-between align-items-center whole-info-container">
+                        <div style="width: 70%;" class="info-part profile-show-experience-container">
+                            <p class="profile-experience-headline">{{education.school}}</p>
+                            <p class="profile-experience-company">{{education.degree}}, {{education.field_of_study}}</p>
+                            <p class="profile-education-cgpa"><b>Grade: </b> {{education.grade}}</p>
+                            <p class="profile-experience-date">{{education.start_date}} - {{education.end_date}}</p>
+                            <p class="profile-experience-location mb-2">{{education.location}}</p>
+                            <p style="text-align: justify;">{{education.description}}</p>
+                        </div>
+
+                        <div style="width: 25%; display:flex; justify-content:flex-end; gap:0.3rem" class="info-edit-delete">
+                            <a href="{% url 'update-education' education.id %}" class="profile-edit-btn-a m-0"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="{% url 'delete-education' education.id %}?next=/account" class="profile-edit-btn-a m-0"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+
+            <div class="profile-desc-section">
+                <div class="sccount-header-container d-flex justify-content-between align-items-center">
+                    <p class="profile-header">Skills</p>
+                    <a href="{% url 'create-skill' %}" class="profile-edit-btn-a m-0 add-edit-btn"><i class="fa-solid fa-plus"></i> Add skill</a>
+                </div>
+                <div class="sec-hr"></div>
+
+                {% for skill in skills %}
+
+                <div class="w-100 d-flex justify-content-between align-items-center top-skills-container  whole-info-container">
+                    <div style="width: 70%;" class="skills-info-container">
+                        <p class="top-skills-header">{{skill.name}}</p>
+                        <p class="top-skills-desc">{{skill.description}}</p>
+                    </div>
+
+                    <div style="width: 25%; display:flex; justify-content:flex-end; gap:0.3rem"  class="info-edit-delete skill-edit">
+                        <a href="{% url 'update-skill' skill.id %}" class="profile-edit-btn-a m-0"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                        <a href="{% url 'delete-skill' skill.id %}?next=/account" class="profile-edit-btn-a m-0"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                    </div>
+                </div>
+                <hr>
+                
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

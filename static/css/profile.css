@@ -3,9 +3,6 @@ p, h1 {
     padding: 0;
 }
 
-.custom-nav {
-    background: -webkit-linear-gradient(45deg, #00115f, #0058fc) !important;
-}
 
 #all-things {
     padding: 0;
@@ -55,14 +52,32 @@ p, h1 {
     max-width: 250px;
     height: auto;
     border-radius: 50%;
-    border: 2px solid blue;
+    border: 2px solid var(--logo-main-color);
+}
+
+#cstm-btn {
+    padding: 0.4rem 1.2rem !important;
+    background-color: #ec1e3e;
+    border: 1px solid white;
+    font-size: 1.2rem;
+    color: white;
+    font-family: "Volte Medium";
+    border-radius: 7px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+#cstm-btn:hover {
+    background-color: white;
+    color: #ec1e3e;
 }
 
 .profile-type {
     width: 100%;
     text-align: center;
     padding: 0.3rem 0.8rem;
-    background: var(--primary-theme-tr-color);
+    background: #ec1e3e !important;
     color: white;
     font-size: 1rem;
     text-transform: uppercase;
@@ -74,6 +89,7 @@ p, h1 {
 
 .profile-name {
     font-family: 'Volte Semibold';
+    color: var(--logo-main-color);
     font-size: 1.7rem;
     margin-top: 1rem;
     margin-bottom: 0.3rem;
@@ -94,7 +110,7 @@ p, h1 {
     font-family: "Volte Semibold";
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
-    color: red;
+    color: var(--logo-secondary-color);
     font-size: 1.1rem;
 }
 
@@ -107,6 +123,10 @@ p, h1 {
     gap: 1rem;
     font-size: 2rem;
     margin-bottom: 0.3rem;
+}
+
+.social-link-ind {
+    color: var(--logo-main-color);
 }
 
 .profile-send-email-btn {
@@ -134,14 +154,15 @@ p, h1 {
 
 .profile-header {
     font-family: "Volte Semibold";
-    font-size: 1.6rem;
+    color: var(--logo-main-color);
+    font-size: 1.4rem;
     text-transform: uppercase;
 }
 
 .sec-hr {
     width: 4.5rem;
     height: 0.3rem;
-    background-image: var(--gradient-BG-color);
+    background: var(--logo-secondary-color);
     border-radius: 2px;
     margin-bottom: 1rem;
 }
@@ -170,9 +191,9 @@ p, h1 {
     width: 15%;
     font-family: "Volte Semibold";
     font-size: 1.2rem;
-    color: rgb(0, 39, 13);
     padding: 0.2rem 0.3rem;
-    background-color: rgb(194, 255, 212);
+    background-color: rgb(180, 244, 255);
+    color: var(--logo-main-color);
     border-radius: 10px;
     text-align: center;
 }
@@ -190,13 +211,14 @@ p, h1 {
     padding: 0.3rem 0.5rem;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.8rem;
 }
 
 .other-skill {
     padding: 0.2rem 0.4rem;
-    background-color: rgb(198, 253, 255);
-    color: rgb(0, 61, 31);
+    background-color: rgb(180, 244, 255);
+    color: var(--logo-main-color);
+    padding: 0.4rem 0.9rem;
     font-weight: bold;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -223,7 +245,7 @@ p, h1 {
     height: auto;
     width: 100%;
     border-radius: 5px;
-    background: var(--primary-theme-tr-color);
+    background: var(--logo-secondary-color);
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;

@@ -1,0 +1,213 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/panel.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
+
+<section id="all-things">
+    <div class="container">
+    <section class="row flex-things">
+        <div id="toggle-list-things-container" class="">
+            <ul id="list-items">
+                <div id="toggler-item" class="list-item"><i class="fas fa-bars"></i>  Executive Committee</div>
+
+                {% for eca in ec_all %}
+                <li class="list-item"><a href="{% url 'executive-committee' eca.id %}">{{eca.title}}</a></li>
+                {% endfor %}
+                <!-- <li class="list-item item-active"><a href="#">Executive Committee in 2020</a></li> -->
+                
+
+            </ul>
+        </div>
+
+    
+        <div id="items-container" class="">
+            <div class="cs-container">
+                <div class="card">
+                  <img src="{{ ec_year.president.profile_image.url }}" alt="Person" class="card__image">
+                  <p class="card__name">{{ ec_year.president.name }}</p>
+                  <div class="grid-container">
+                    <div class="grid-child-posts member-post">
+                      President
+                    </div>
+                    <div class="grid-child-posts member-session">
+                        <span>{{ec_year.ec_start_date}}</span>
+                        {% if ec_year.ec_current %}
+                        <span> - Current</span>
+                        {% else %}
+                        <span> - {{ec_year.ec_end_date}}</span>
+                        {% endif %}
+                      </div>
+                  </div>
+                  <ul class="social-icons">
+                      <li><a href="{% url 'user-profile' ec_year.president.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                      <li><a href="{% url 'user-profile' ec_year.president.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                      <li><a href="mailto:{{ ec_year.president.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                  </ul>
+                  <a href="{% url 'user-profile' ec_year.president.id %}" class="btn draw-border">View Profile</a>                  
+                </div>
+
+                <div class="card">
+                    <img src="{{ ec_year.vice_president.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.vice_president.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        Vice President
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.vice_president.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.vice_president.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.vice_president.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.vice_president.id %}" class="btn draw-border">View Profile</a>                  
+                  </div>
+
+                  <div class="card">
+                    <img src="{{ ec_year.general_secretary.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.general_secretary.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        General Secretary
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.general_secretary.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.general_secretary.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.general_secretary.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.general_secretary.id %}" class="btn draw-border">View Profile</a>                  
+                  </div>
+
+                  <div class="card">
+                    <img src="{{ ec_year.joint_secretary.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.joint_secretary.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        Joint Secretary
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.joint_secretary.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.joint_secretary.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.joint_secretary.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.joint_secretary.id %}" class="btn draw-border">View Profile</a>                  
+                  </div>
+
+                  <div class="card">
+                    <img src="{{ ec_year.treasurer.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.treasurer.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        Treasurer
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.treasurer.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.treasurer.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.treasurer.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.treasurer.id %}" class="btn draw-border">View Profile</a>                  
+                  </div>
+
+                  <div class="card">
+                    <img src="{{ ec_year.event_coordinator.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.event_coordinator.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        Event Coordinator
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.event_coordinator.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.event_coordinator.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.event_coordinator.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.event_coordinator.id %}" class="btn draw-border">View Profile</a>                  
+                  </div>
+
+                  <div class="card">
+                    <img src="{{ ec_year.head_of_logistics.profile_image.url }}" alt="Person" class="card__image">
+                    <p class="card__name">{{ ec_year.head_of_logistics.name }}</p>
+                    <div class="grid-container">
+                      <div class="grid-child-posts member-post">
+                        Head of Logistics
+                      </div>
+                      <div class="grid-child-posts member-session">
+                          <span>{{ec_year.ec_start_date}}</span>
+                          {% if ec_year.ec_current %}
+                          <span> - Current</span>
+                          {% else %}
+                          <span> - {{ec_year.ec_end_date}}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <ul class="social-icons">
+                        <li><a href="{% url 'user-profile' ec_year.head_of_logistics.social_facebook %}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{% url 'user-profile' ec_year.head_of_logistics.social_linkedin %}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:{{ ec_year.head_of_logistics.email }}"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                    <a href="{% url 'user-profile' ec_year.head_of_logistics.id %}" class="btn draw-border">View Profile</a>                  
+                 </div>
+
+                  
+            </div>                  
+        </div>
+            
+    </div>
+    </section>
+
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

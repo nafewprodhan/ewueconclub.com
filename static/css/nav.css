@@ -14,6 +14,14 @@ div.container-fluid {
     transition: background-color 200ms linear;
   }
 
+.last-nav-link {
+    font-family: 'Volte Medium' !important;
+    letter-spacing: 1.2px !important;
+    font-size: 1.02rem !important;
+    text-decoration: none !important;
+    color: white !important;
+}
+
 .navbar-brand img {
     position: absolute;
     top: 50%;
@@ -37,15 +45,15 @@ span.navbar-toggler-icon {
 }
 
 .nav-item {
-    margin: 0.1rem 0.6rem;
+    margin: 0.1rem 0.4rem;
 }
 
 .nav-link {
     font-family: 'Volte Medium';
-    letter-spacing: 1.2px;
+    letter-spacing: 1.1px;
     font-size: 1.02rem;
     color: white !important;
-    padding: 0.4rem 0.9rem !important;
+    padding: 0.4rem 0.8rem !important;
 }
 
 .nav-link:hover {

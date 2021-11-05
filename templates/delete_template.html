@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+
+{% endblock head %}
+
+
+
+{% block content %}
+<div class="container">
+<div style="position: relative; top: 6rem;" class="row">
+    <div class="col-lg-5 col-md-8 col-11 m-auto p-3">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p style="font-size: 1.4rem;">Are you sure you want to delete <b>"{{object}}"</b></p>
+            <a class="btn btn-secondary" href="{{request.GET.next}}">Go Back</a>           
+            <input type="submit" style="color: white;" class="cstm-btn" value="Delete">
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

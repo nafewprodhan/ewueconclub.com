@@ -5,7 +5,7 @@ body {
 .form-template {
     width: 100%;
     position: relative;
-    top: 7rem;
+    top: 6rem;
     z-index: 1;
     background: transparent;
     height: auto;
@@ -87,6 +87,6 @@ body {
 
 @media screen and (max-width: 650px) {
   .main-form {
-    padding: 0.5rem 0 !important;
+    padding: 0.5rem 0.5rem !important;
   }
 }

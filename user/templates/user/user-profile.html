@@ -1,7 +1,19 @@
+{% extends 'main.html' %}v
+
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
 <section id="all-things" class="container">
     <section class="row flex-things">
         <div id="toggle-list-things-container" class="">
-            <img src="/resources/images/profile-img.jpg" alt="" class="img-fluid profile-img">
+            <img src="{{ profile.profile_image.url }}" alt="" class="img-fluid profile-img">
             <p class="profile-type">Student</p>
             <h1 class="profile-name">Nafew Prodhan</h1>
             <p class="profile-headline">Web Developer | Graphic Designer</p>
@@ -18,7 +30,7 @@
                 <a href="" class="social-link-ind"><i class="fa-brands fa-linkedin"></i></a>
             </div>
 
-            <a href="#" class="btn btn-primary profile-send-email-btn"><i class="fa-solid fa-envelope"></i> Send email</a>
+            <a href="#" id="cstm-btn"><i class="fa-solid fa-envelope"></i> Send email</a>
         </div>
     
         <div id="items-container" class="">
@@ -152,3 +164,10 @@
         </div>
     </section>
 </section>
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

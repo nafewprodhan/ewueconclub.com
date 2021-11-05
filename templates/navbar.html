@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light custom-nav">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-light custom-nav">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="{% static 'images/ewu-econ-club-logo.png' %}" alt="" srcset="">
@@ -16,12 +16,19 @@
         </button>
         <div class="collapse navbar-collapse nav-info-container m-auto" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                <ul style="align-items: center;" class="navbar-nav me-lg-auto mt-lg-0 mt-md-3 mb-0 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-first active" aria-current="page" href="#">Home</a>
+                        <a style="padding: 0 !important;" class="nav-link nav-first active" aria-current="page" href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Our Club</a></li>
+                            <li><a class="dropdown-item" href="#">Bangladesh Economy</a></li>
+                            <li><a class="dropdown-item" href="#">World Economy</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -29,10 +36,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Notice</a>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Search
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Blood Group</a></li>
+                            <li><a class="dropdown-item" href="#">Members & Skills</a></li>
+                            <li><a class="dropdown-item" href="#">Alumni</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                <ul style="align-items: center;" class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ePub
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Research Paper</a></li>
+                            <li><a class="dropdown-item" href="#">Blog</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Event</a>
@@ -42,14 +66,20 @@
                         Guardian
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Moderators</a></li>
-                            <li><a class="dropdown-item" href="#">Executive Committee</a></li>
+                            <li><a class="dropdown-item" href="{% url 'moderators' %}">Moderators</a></li>
+                            <li><a class="dropdown-item" href="{% url 'executive-committees' %}">Executive Committee</a></li>
                         </ul>
                     </li>
 
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link login-nav" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i> Logout</a>
+                    <li class="nav-item dropdown">
+                        <a style="padding: 0; color:white; text-decoration:none;" class="dropdown-toggle last-nav-link"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img style="width: 40px; height: auto; border-radius: 50%;" src="{{request.user.profile.profile_image.url}}" alt=""> <span style="text-decoration: none; padding:0.3rem 0.4rem; background-color:#ec1e3e; font-size: 1.02rem; font-family: 'Volte Medium'; letter-spacing: 1px" class="last-nav-link"> {{request.user.profile.name|slice:":5"}}</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'account' %}"><i class="fa-solid fa-user"></i> My Account</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i> Logout</a></li>
+                        </ul>
                     </li>
                     {% else %}
                     <li class="nav-item">
