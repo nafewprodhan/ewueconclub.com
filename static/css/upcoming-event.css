@@ -3,8 +3,9 @@ Start Upcoming Event section
 ======================================= */
 
 .up-event-timer-container {
+    margin: 0 !important;
     padding: 0.8rem;
-    background-image: var(--primary-theme-tr-color);
+    background-image: var(--logo-gradient-tr-color);
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
 
@@ -21,8 +22,8 @@ Start Upcoming Event section
     letter-spacing: 2px;
     word-spacing: 2px;
     border-radius: 10px;
-    color: var(--primary-darker-text-color);
-    background-color: var(--primary-white-btn-BG);
+    color: var(--logo-main-color);
+    background-color: white;
 
 }
 
@@ -53,7 +54,7 @@ Start Upcoming Event section
     padding: 0.1rem 0.7rem;
     border-radius: 6px;
     text-transform: uppercase;
-    background-image: var(--primary-theme-tr-color);
+    background-image: var(--logo-gradient-color);
     color: var(--primary-lighter-text-color);
     font-weight: 500;
     margin: 0;

@@ -26,5 +26,5 @@
     --logo-secondary-color: #ec1e3e !important;
 
     --logo-gradient-color: linear-gradient(to right top, #064970, #454c8f, #8d3f93, #cb1e76, #ec1e3e);
-
+    --logo-gradient-tr-color: linear-gradient(to left top, #0649706c, #454c8f63, #8d3f936e, #cb1e7756, #ec1e3d75);
 }

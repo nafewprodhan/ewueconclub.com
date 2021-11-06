@@ -153,7 +153,7 @@ class Executivecommittiee(models.Model):
 class Moderator(models.Model):
     title = models.CharField(max_length=1000)
 
-    moderator_one = models.ForeignKey(Profile, related_name="moderator_one", verbose_name="moderator_one", null=True, blank=True, on_delete=models.CASCADE)
+    moderator_one = models.ForeignKey(Profile, related_name="moderator_one", verbose_name="moderator_one", null=True, blank=True, on_delete=models.DO_NOTHING)
     moderator_two = models.ForeignKey(Profile, related_name="moderator_two", verbose_name="moderator_two", null=True, blank=True, on_delete=models.DO_NOTHING)
     moderator_three = models.ForeignKey(Profile, related_name="moderator_three", verbose_name="moderator_three", null=True, blank=True, on_delete=models.DO_NOTHING)
 

@@ -1,16 +1,16 @@
 .gap-helper {
-    height: 6rem;
+    height: 3rem;
     width: 100%;
     background-color: #ececec;
 }
 
 body {
-    background-color: #ececec;
+    background-color: #e2e2e2;
 }
 
 #all-things {
     position: relative;
-    top: 5rem !important;
+    top: 4rem !important;
     height: auto;
 }
 
@@ -52,7 +52,7 @@ ul#list-items {
 }
 
 #toggler-item {
-    background: linear-gradient(45deg, rgb(9, 46, 229) 35%, rgb(0, 213, 255) 100%);
+    background: var(--logo-main-color);
     font-family: "Volte Semibold";
     color: white;
     font-size: 1.3rem;
@@ -99,14 +99,16 @@ ul#list-items {
     padding: 0.4rem;
     background-color: rgb(255, 255, 255);
     border: 1px solid #bbbbbba1;
-    border-radius: 4px;
+    border-radius: 15px;
     text-decoration: none !important;
     color: var(--primary-darker-text-color);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.17) 0px 30px 60px -30px !important;
 }
 
 .single-item-container img {
     width: 30%;
     height: 100%;
+    border-radius: 15px;
 }
 
 .item-info-container {
@@ -120,10 +122,10 @@ ul#list-items {
     font-family: "Volte Semibold";
     font-size: 1.5rem;
     text-transform: uppercase;
-    background: var(--primary-theme-dark-color);
-    background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
+    background: var(--logo-main-color);
+    /* background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
     background: -moz-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
-    background: var(--primary-theme-dark-color);
+    background: var(--primary-theme-dark-color); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -149,13 +151,13 @@ ul#list-items {
 .upcoming-label {
     color: white;
     font-weight: bolder;
-    background: var(--primary-theme-tr-color);
+    background: var(--logo-gradient-color);
 }
 
 .item-date {
     margin: 0;
-    color: rgb(39, 39, 39);
-    font-weight: bold;
+    color: rgb(255, 47, 99);
+    font-weight: 500;
 }
 
 .item-desription {
@@ -176,8 +178,8 @@ ul#list-items {
 .item-tag {
     font-size: 0.85rem;
     padding: 0.2rem 0.4rem;
-    background-color: rgb(194, 255, 255);
-    color: #005f63;
+    background-color: rgb(180, 244, 255);
+    color: var(--logo-main-color);
     border-radius: 10px;
     font-weight: bold;
 }
@@ -213,41 +215,60 @@ ul#list-items {
 
 .search-form {
     width: 100%;
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    height: auto;
+    max-width: 500px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 0 auto !important;
+    margin-bottom: 4rem !important;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.17) 0px 30px 60px -30px !important;
-
 }
 
-.input-search, .search-submit {
-    padding: 0.65rem 0.8rem;
+.search-container {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto !important;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.17) 0px 30px 60px -30px !important;
 }
 
-.input-search {
-    width: 75%;
-    border-top-left-radius: 8px;    
-    border-bottom-left-radius: 8px;
-    border: 1px solid #bbbbbb;
-    border-right: none;
+.input-search-label {
+    width: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--logo-secondary-color);
 }
 
-.input-search:focus {
-    outline: none;
-    border: 1px solid #092ee5 !important;
+#input-search, .search-submit, .input-search-label {
+    padding: 0.5rem;
+    height: 45px !important;
+}
+
+#input-search {
+    width: 380px;
+    border: none;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#input-search:focus {
+    border: none !important;
+    outline: none !important;
 }
 
 .search-submit {
-    font-family: "Volte Semibold";
-    width: 25%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border: 1px solid #092ee5;
-    border-left: none;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    width: 80px;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    background-color: var(--logo-secondary-color);
     color: white;
-    background: linear-gradient(45deg, rgb(9, 46, 229) 35%, rgb(0, 213, 255) 100%);
+    font-family: 'Volte Medium';
+
 }

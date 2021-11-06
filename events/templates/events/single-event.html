@@ -1,0 +1,111 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/glider.css' %}">
+<link rel="stylesheet" href="{% static 'css/single-event.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row flex-single-event-row">
+        <section id="event-small-info-container" class="col-lg-3">
+            <div class="s-event-sm-section">
+                <h2 class="sm-ev-header">Start Time</h2>
+                <div class="sm-time-container">
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                </div>
+            </div>
+
+            <div class="s-event-sm-section">
+                <h2 class="sm-ev-header">Finish Time</h2>
+                <div class="sm-time-container">
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                </div>
+            </div>
+
+            <div class="s-event-sm-section">
+                <h2 class="sm-ev-header">Registration Deadline</h2>
+                <div class="sm-time-container">
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                </div>
+                <a class="sm-register-btn-a" href="#">Registration Open</a>
+                <p class="sm-event-registered-num"><i class="fa-solid fa-registered"></i> 153 registered</p>
+            </div>
+
+            <div class="s-event-sm-section">
+                <h2 class="sm-ev-header">Place</h2>
+                <p class="sm-event-location"><i class="fa-solid fa-location-dot"></i> East West University</p>
+            </div>
+            
+        </section>
+
+        <section id="event-details-info-container" class="col-lg-8">
+            <h1 class="s-event-name">Excelonomics 1.0 -- Latest Event</h1>
+            <img src="/resources/images/upcoming-event.png" alt="" class="s-event-main-img img-fluid">
+            <p class="s-event-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in tempore fugiat praesentium reiciendis similique at quibusdam ipsa ullam distinctio? Aperiam ea itaque vel, autem voluptatem saepe rerum labore reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quasi nostrum, veritatis, excepturi recusandae pariatur ut expedita, error iure officiis itaque sed dolores cupiditate corporis quam neque. Eaque, vitae incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, quae iure id exercitationem itaque, rerum eveniet eius ad nobis officiis natus incidunt odio cupiditate, nulla quibusdam. Velit dolores eaque eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta quaerat magni autem, perspiciatis inventore porro facere ex, explicabo eos sed. Velit, ea nemo obcaecati ex maiores temporibus minus alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis animi iusto harum rerum. Impedit quisquam aperiam voluptates fugiat libero deserunt expedita quo explicabo dolor praesentium incidunt, provident, aliquam iure rerum.</p>
+            <p class="s-event-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in tempore fugiat praesentium reiciendis similique at quibusdam ipsa ullam distinctio? Aperiam ea itaque vel, autem voluptatem saepe rerum labore reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quasi nostrum, veritatis, excepturi recusandae pariatur ut expedita, error iure officiis itaque sed dolores cupiditate corporis quam neque. Eaque, vitae incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, quae iure id exercitationem itaque, rerum eveniet eius ad nobis officiis natus incidunt odio cupiditate, nulla quibusdam. Velit dolores eaque eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta quaerat magni autem, perspiciatis inventore porro facere ex, explicabo eos sed. Velit, ea nemo obcaecati ex maiores temporibus minus alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis animi iusto harum rerum. Impedit quisquam aperiam voluptates fugiat libero deserunt expedita quo explicabo dolor praesentium incidunt, provident, aliquam iure rerum.</p>
+        </section>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row comment-row">
+        <div class="col-lg-8 ml-auto comment-column">
+            <h2 class="feedback-header">Feedback</h2>
+            <form class="comment-form" action="" method="POST">
+                <textarea name="comment-event" placeholder="Write your comments..." class="comment-event" id="" cols="30" rows="7"></textarea>
+                <input class="comments-btn" type="submit" value="Comments">
+            </form>
+
+            <div class="comment-show-container">
+                <div class="ind-comment-wrap">
+                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
+                    <div class="cmt-info-wrap">
+                        <p class="cmt-prof-name">Rouful Raj</p>
+                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
+                    </div>
+                </div>
+
+                <div class="ind-comment-wrap">
+                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
+                    <div class="cmt-info-wrap">
+                        <p class="cmt-prof-name">Rouful Raj</p>
+                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
+                    </div>
+                </div>
+
+                <div class="ind-comment-wrap">
+                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
+                    <div class="cmt-info-wrap">
+                        <p class="cmt-prof-name">Rouful Raj</p>
+                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
+                    </div>
+                </div>
+
+                <div class="ind-comment-wrap">
+                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
+                    <div class="cmt-info-wrap">
+                        <p class="cmt-prof-name">Rouful Raj</p>
+                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+{% block script %}
+<script src="{% static 'js/glider.js' %}"></script>
+
+{% endblock script %}
