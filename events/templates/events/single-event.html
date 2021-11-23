@@ -16,24 +16,24 @@
             <div class="s-event-sm-section">
                 <h2 class="sm-ev-header">Start Time</h2>
                 <div class="sm-time-container">
-                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
-                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> {{event.start_date_time.date}}</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> {{event.start_date_time.time}}</p>
                 </div>
             </div>
 
             <div class="s-event-sm-section">
                 <h2 class="sm-ev-header">Finish Time</h2>
                 <div class="sm-time-container">
-                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
-                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> {{event.end_date_time.date}}</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> {{event.end_date_time.time}}</p>
                 </div>
             </div>
 
             <div class="s-event-sm-section">
                 <h2 class="sm-ev-header">Registration Deadline</h2>
                 <div class="sm-time-container">
-                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> 28-10-2021</p>
-                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> 08:20 AM</p>
+                    <p class="sm-date"><i class="fa-solid fa-calendar-check"></i> {{event.reg_dead_line.date}}</p>
+                    <p class="sm-clock"><i class="fa-solid fa-clock"></i> {{event.reg_dead_line.time}}</p>
                 </div>
                 <a class="sm-register-btn-a" href="#">Registration Open</a>
                 <p class="sm-event-registered-num"><i class="fa-solid fa-registered"></i> 153 registered</p>
@@ -41,16 +41,15 @@
 
             <div class="s-event-sm-section">
                 <h2 class="sm-ev-header">Place</h2>
-                <p class="sm-event-location"><i class="fa-solid fa-location-dot"></i> East West University</p>
+                <p class="sm-event-location"><i class="fa-solid fa-location-dot"></i> {{event.place}}</p>
             </div>
             
         </section>
 
         <section id="event-details-info-container" class="col-lg-8">
-            <h1 class="s-event-name">Excelonomics 1.0 -- Latest Event</h1>
-            <img src="/resources/images/upcoming-event.png" alt="" class="s-event-main-img img-fluid">
-            <p class="s-event-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in tempore fugiat praesentium reiciendis similique at quibusdam ipsa ullam distinctio? Aperiam ea itaque vel, autem voluptatem saepe rerum labore reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quasi nostrum, veritatis, excepturi recusandae pariatur ut expedita, error iure officiis itaque sed dolores cupiditate corporis quam neque. Eaque, vitae incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, quae iure id exercitationem itaque, rerum eveniet eius ad nobis officiis natus incidunt odio cupiditate, nulla quibusdam. Velit dolores eaque eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta quaerat magni autem, perspiciatis inventore porro facere ex, explicabo eos sed. Velit, ea nemo obcaecati ex maiores temporibus minus alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis animi iusto harum rerum. Impedit quisquam aperiam voluptates fugiat libero deserunt expedita quo explicabo dolor praesentium incidunt, provident, aliquam iure rerum.</p>
-            <p class="s-event-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in tempore fugiat praesentium reiciendis similique at quibusdam ipsa ullam distinctio? Aperiam ea itaque vel, autem voluptatem saepe rerum labore reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quasi nostrum, veritatis, excepturi recusandae pariatur ut expedita, error iure officiis itaque sed dolores cupiditate corporis quam neque. Eaque, vitae incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, quae iure id exercitationem itaque, rerum eveniet eius ad nobis officiis natus incidunt odio cupiditate, nulla quibusdam. Velit dolores eaque eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta quaerat magni autem, perspiciatis inventore porro facere ex, explicabo eos sed. Velit, ea nemo obcaecati ex maiores temporibus minus alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis animi iusto harum rerum. Impedit quisquam aperiam voluptates fugiat libero deserunt expedita quo explicabo dolor praesentium incidunt, provident, aliquam iure rerum.</p>
+            <h1 class="s-event-name">{{event.title}}</h1>
+            <img src="{{event.banner.url}}" alt="" class="s-event-main-img img-fluid">
+            <p style="padding: 0.5rem !important;">{{event.body|safe}}</p>
         </section>
     </div>
 </div>
@@ -59,43 +58,33 @@
     <div class="row comment-row">
         <div class="col-lg-8 ml-auto comment-column">
             <h2 class="feedback-header">Feedback</h2>
-            <form class="comment-form" action="" method="POST">
-                <textarea name="comment-event" placeholder="Write your comments..." class="comment-event" id="" cols="30" rows="7"></textarea>
-                <input class="comments-btn" type="submit" value="Comments">
+            {% if request.user.is_authenticated %}
+            <form class="comment-form" action="{% url 'event' event.id %}" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label for="form-label">{{field.label}}</label>
+                    {{field}}
+                {% endfor %}                 
+                <input class="comments-btn" type="submit" value="Comment">
             </form>
+            {% else %}
+                <a href="{% url 'login' %}?next={{request.path}}">Please login to leave a review</a>
+            {% endif %}
 
             <div class="comment-show-container">
+                {% for review in event.eventreview_set.all %}
                 <div class="ind-comment-wrap">
-                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
+                    <a href="{% url 'user-profile' review.owner.id  %}">
+                        <img src="{{review.owner.profile_image.url}}" alt="" class="cmt-prof-avator">
+                     </a>    
                     <div class="cmt-info-wrap">
-                        <p class="cmt-prof-name">Rouful Raj</p>
-                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
+                        <a href="{% url 'user-profile' review.owner.id  %}">
+                            <p class="cmt-prof-name">{{review.owner.name}}</p>
+                        </a>
+                        <p class="cmt">{{review.body|linebreaksbr}}</p>
                     </div>
                 </div>
-
-                <div class="ind-comment-wrap">
-                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
-                    <div class="cmt-info-wrap">
-                        <p class="cmt-prof-name">Rouful Raj</p>
-                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
-                    </div>
-                </div>
-
-                <div class="ind-comment-wrap">
-                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
-                    <div class="cmt-info-wrap">
-                        <p class="cmt-prof-name">Rouful Raj</p>
-                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
-                    </div>
-                </div>
-
-                <div class="ind-comment-wrap">
-                    <img src="/resources/images/cmt-avator.jpg" alt="" class="cmt-prof-avator">
-                    <div class="cmt-info-wrap">
-                        <p class="cmt-prof-name">Rouful Raj</p>
-                        <p class="cmt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum similique animi alias corporis iusto tempore numquam voluptas culpa iste sequi? Placeat nemo optio atque molestias provident doloribus dolore dignissimos culpa?</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -3,6 +3,8 @@ from ckeditor.fields import RichTextField
 from user.models import Executivecommittiee, Moderator
 import uuid
 
+from user.models import Profile
+
 # Create your models here.
 
 class EventCategorie(models.Model):
@@ -40,6 +42,7 @@ class Event(models.Model):
     event_satus = models.CharField(max_length=100, choices=event_status_list, default=event_status_list[2][0])
 
     place = models.CharField(max_length=1000)
+    tags = models.ManyToManyField('EventTag', blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
@@ -47,3 +50,29 @@ class Event(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+    class Meta:
+        ordering = ['-start_date_time']
+
+
+class EventTag(models.Model):
+    name = models.CharField(max_length=200)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.name
+
+
+class EventReview(models.Model):
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    body = models.TextField(null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+
+    def __str__(self):
+        return str(self.event)
