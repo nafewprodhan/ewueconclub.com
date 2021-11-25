@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
     path('events/', include('events.urls')),
+    # path('blogs/', include('eblogs.urls')),
+    path('tinymce/', include('tinymce.urls')),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

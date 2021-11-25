@@ -2,7 +2,6 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 from django.contrib.auth.models import User
-from django.http import request
 from .models import Event
 from user.models import Profile
 
@@ -12,10 +11,6 @@ from django.conf import settings
 
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
-from django.utils.html import strip_tags
-
-# from MessageAlarmWeb.settings import EMAIL_HOST_USER
-from django.template import Context, RequestContext
 
 # def sendEventMail(sender, instance, created, **kwargs):
 #     if created:
@@ -35,14 +30,12 @@ def sendEventMail(sender, instance, created, **kwargs):
         allemail = Profile.objects.all()
 
         for mail in allemail:
-            # context_instance = RequestContext(request)
-            # html_content = render_to_string("events/event-email-template.html",  request=request)
             context = {'event': event, 'profile': allemail}
             html_template = get_template("events/event-email-template.html").render(context)
-            # text_content = strip_tags(html_content)
             email = EmailMultiAlternatives(subject="test - send event mail template", from_email="ewueconclubnet@gmail.com", to=[mail.email])
             email.attach_alternative(html_template, 'text/html')
             email.send()
             print(mail)
+            
 
 post_save.connect(sendEventMail, sender=Event)
