@@ -4,7 +4,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/upcoming-event.css' %}">
-<link rel="stylesheet" href="{% static 'css/all-items.css' %}">
+<link rel="stylesheet" href="{% static 'css/events.css' %}">
 {% endblock head %}
 
 
@@ -13,15 +13,28 @@
 
 <div class="gap-helper"></div>
 
+<div id="top-ab-color"></div>
+
 <section id="all-things" class="container">
     <div class="row d-flex justify-content-between flex-things">
         <div id="toggle-list-things-container" class="col-lg-3">
+            <div class="ul-bg-after">
             <ul id="list-items">
-                <div id="toggler-item" class="list-item"><i class="fas fa-bars"></i>  Event Categories</div>
+                <div id="toggler-item" class="list-item mb-2"><i class="fas fa-bars"></i>  Event Categories</div>
                 {% for event_cat in event_cats %}
-                <li class="list-item"><a href="{% url 'event-categories' event_cat.id %}">{{event_cat.title}}</a></li>
+
+                <li 
+                    {% if event_cat.id|stringformat:"s" == req_url %}
+                        class="list-item active-list"
+                    {% else %}
+                        class="list-item"
+                    {% endif %}
+                >
+                    <a href="{% url 'event-categories' event_cat.id %}">{{event_cat.title}}</a>
+                </li>
                 {% endfor %}
             </ul>
+            </div>
         </div>
     
         <div id="items-container" class="col-lg-8">
@@ -31,7 +44,7 @@
 
                     <section id="search-form-section" class="container">
                         <div class="row">
-                            <div class="col-lg-6 m-auto">
+                            <div class="col-lg-8 m-auto">
                                 <form class="search-form" action="{% url 'events' %}" method="GET">
                                     <div class="search-container">
                                         <label for="input-search" class="input-search-label"><i class="fa-solid fa-search"></i></label>
@@ -42,54 +55,129 @@
                             </div>
                         </div>
                     </section>
-
-                    <div class="col-lg-12 col-12 m-auto up-event-timer-container">
-                        <div class="d-flex justify-content-between align-items-center  custom-flex-gap">
-                            <a class="up-event-btn-div-a" href="#">Upcoming Event</a>
-                        
-                            <div class="up-timer">
-                                <div class="timer up-ev-day">
-                                    <p class="up-timer-num">8</p>
-                                    <p class="up-timer-title">Days</p>
-                                </div>
-                                <div class="timer up-ev-hour">
-                                    <p class="up-timer-num">12</p>
-                                    <p class="up-timer-title">Hours</p>
-                                </div>
-                                <div class="timer up-ev-min">
-                                    <p class="up-timer-num">04</p>
-                                    <p class="up-timer-title">Mins</p>
-                                </div>
-                                <div class="timer up-ev-sec">
-                                    <p class="up-timer-num">53</p>
-                                    <p class="up-timer-title">Secs</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
             {% for event in events_year %}
-
-            <a href="{% url 'event' event.id %}" class="single-item-container">
-                <img class="img-fluid" src="{{event.banner.url}}" alt="">
-                <div class="item-info-container">
-                    <h1 class="item-title">{{event.title}}</h1>
-                    <div class="item-extra-info">
-                        <p class="item-date"><i class="fa-solid fa-calendar-days"></i><i> {{event.start_date_time}} -- {{event.start_date_time.day}}</i></p>
-                        <p class="item-timing-label">{{event.event_satus}}</p>
-                    </div>
-                    <p class="item-desription">{{event.body|slice:'0:160'|safe}}...</p>
-                    <div class="item-tags">
-
-                        {% for tag in event.tags.all %}
-                        <span class="item-tag">{{tag}}</span>
-                        {% endfor %}
+                
+                {% if event.event_satus == "upcoming"  %}
+                <div class="row">
+                <div id="up-event-wrapper">
+                <div class="up-event-w-wraper">
+                <div class="col-lg-12 col-12 m-auto up-event-timer-container">
+                    <div class="d-flex justify-content-between align-items-center  custom-flex-gap">
+                        <a class="up-event-btn-div-a" href="#">Upcoming Event</a>
+                    
+                        <div id="up-timer">
+                            <!-- <div class="timer up-ev-day">
+                                <p class="up-timer-num">8</p>
+                                <p class="up-timer-title">Days</p>
+                            </div>
+                            <div class="timer up-ev-hour">
+                                <p class="up-timer-num">12</p>
+                                <p class="up-timer-title">Hours</p>
+                            </div>
+                            <div class="timer up-ev-min">
+                                <p class="up-timer-num">04</p>
+                                <p class="up-timer-title">Mins</p>
+                            </div>
+                            <div class="timer up-ev-sec">
+                                <p class="up-timer-num">53</p>
+                                <p class="up-timer-title">Secs</p>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
-            </a>
+                
 
+                <script>
+                    const year = new Date().getFullYear();
+                    const fourthOfJuly = new Date('{{event.start_date_time.year|escapejs}}', '{{event.start_date_time.month|escapejs}}', '{{event.start_date_time.day|escapejs}}').getTime();
+                    console.log(fourthOfJuly);
+                
+                    // countdown
+                    let timer = setInterval(function() {
+                
+                    // get today's date
+                    const today = new Date().getTime();
+                
+                    // get the difference
+                    const diff = fourthOfJuly - today;
+                
+                    // math
+                    let days = Math.floor(diff / (1000 * 60 * 60 * 24)) - 30;
+                    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                    // display
+                    document.getElementById("up-timer").innerHTML =
+                        "<div style=\"display: inline-flex !important\; gap: 15px\;\">\
+                            <div class=\"timer up-ev-day\"> \
+                                <p class=\"up-timer-num\">" + days + "</p> \
+                                <p class=\"up-timer-title\">Days</p> \
+                            </div> \
+                            <div class=\"timer up-ev-hour\"> \
+                                <p class=\"up-timer-num\">" + hours + "</p> \
+                                <p class=\"up-timer-title\">Hours</p> \
+                            </div> \
+                            <div class=\"timer up-ev-min\"> \
+                                <p class=\"up-timer-num\">" + minutes + "</p> \
+                                <p class=\"up-timer-title\">Mins</p> \
+                            </div> \
+                            <div class=\"timer up-ev-sec\"> \
+                                <p class=\"up-timer-num\">" + seconds + "</p> \
+                                <p class=\"up-timer-title\">Secs</p> \
+                            </div> \
+                        </div>" ;
+                
+                    }, 1000);
+                </script>
+
+                <a href="{% url 'event' event.id %}" class="single-item-container">
+                    <img class="img-fluid" src="{{event.banner.url}}" alt="">
+                    <div class="item-info-container">
+                        <h1 style="color: purple !important;" class="item-title">{{event.title}}</h1>
+                        <div class="item-extra-info">
+                            <p class="item-date"><i class="fa-solid fa-calendar-days"></i><i> {{event.start_date_time}}</i></p>
+                            <p style="background-color: purple !important; color:white;" class="item-timing-label">{{event.event_satus}}</p>
+                        </div>
+                        <p class="item-desription">{{event.body|slice:'0:160'|safe}}...</p>
+                        <div class="item-tags">
+
+                            {% for tag in event.tags.all %}
+                            <span class="item-tag">{{tag}}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            </div>
+            </div>  
+
+            {% else %}
+
+            <div style="margin-bottom: 1rem !important;">
+                <a href="{% url 'event' event.id %}" class="single-item-container">
+                    <img class="img-fluid" src="{{event.banner.url}}" alt="">
+                    <div class="item-info-container">
+                        <h1 class="item-title">{{event.title}}</h1>
+                        <div class="item-extra-info">
+                            <p class="item-date"><i class="fa-solid fa-calendar-days"></i><i> {{event.start_date_time}}</i></p>
+                            <p class="item-timing-label">{{event.event_satus}}</p>
+                        </div>
+                        <p class="item-desription">{{event.body|slice:'0:160'|safe}}...</p>
+                        <div class="item-tags">
+
+                            {% for tag in event.tags.all %}
+                            <span class="item-tag">{{tag}}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endif %}
             {% endfor %}
 
             {% include 'pagination.html' with queryset=events_year custom_range=custom_range %}
@@ -100,5 +188,6 @@
 {% endblock content %}
 
 {% block script %}
+
 
 {% endblock script %}

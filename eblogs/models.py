@@ -24,6 +24,8 @@ class Eblog(models.Model):
     body = models.TextField()
     thumbnail = models.ImageField(upload_to='blog-thumbnail/')
 
+    eblog_tags = models.ManyToManyField('EblogTag')
+
     published_timestamp = models.DateTimeField()
     is_published = models.BooleanField(default=False, null=True, blank=True)
 
@@ -35,9 +37,11 @@ class Eblog(models.Model):
     def __str__(self):
         return str(self.title)
 
+    class Meta:
+        ordering = ['-published_timestamp']
+
 
 class EblogTag(models.Model):
-    blog = models.ForeignKey(Eblog, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
 
     created = models.DateTimeField(auto_now_add=True)
@@ -59,13 +63,3 @@ class EblogReview(models.Model):
     def __str__(self):
         return str(self.blog)
 
-class EblogReviewReplie(models.Model):
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    eblog_review = models.ForeignKey(EblogReview, on_delete=models.CASCADE)
-    body = models.TextField(null=False, blank=False)
-    created = models.DateTimeField(auto_now_add=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True,
-                          primary_key=True, editable=False)
-
-    def __str__(self):
-        return str(self.eblog_review)

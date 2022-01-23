@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 from user.models import Executivecommittiee, Moderator
 import uuid
 
@@ -32,12 +31,13 @@ class Event(models.Model):
     executive_committee = models.ForeignKey(Executivecommittiee, on_delete=models.DO_NOTHING)
 
     title = models.CharField(max_length=1000)
-    body = RichTextField()
+    body = models.TextField()
     banner = models.ImageField(upload_to='event-banner/')
 
     start_date_time = models.DateTimeField()
     end_date_time = models.DateTimeField()
-    reg_dead_line = models.DateTimeField()
+    reg_dead_line = models.DateTimeField(null=True, blank=True)
+    reg_opt = models.BooleanField(default=True, null=True, blank=True)
     is_reg_open = models.BooleanField(default=False)
     event_satus = models.CharField(max_length=100, choices=event_status_list, default=event_status_list[2][0])
 

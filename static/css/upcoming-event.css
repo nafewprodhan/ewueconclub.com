@@ -27,11 +27,6 @@ Start Upcoming Event section
 
 }
 
-.up-timer {
-    display: inline-flex;
-    gap: 15px;
-}
-
 .timer {
     width: 5rem;
     height: 4rem;
@@ -103,11 +98,6 @@ Start Upcoming Event section
     font-size: 1.7rem;
     text-transform: uppercase;
     background: var(--primary-theme-dark-color);
-    background: -webkit-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
-    background: -moz-linear-gradient(to right, #C400A7 17%, #00D5FF 100%);
-    background: var(--primary-theme-dark-color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /* =======================================

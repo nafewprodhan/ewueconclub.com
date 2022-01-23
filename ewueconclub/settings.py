@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'events.apps.EventsConfig',
     'eblogs.apps.EblogsConfig',
+    'notices.apps.NoticesConfig',
+    'epub.apps.EpubConfig',
+    'bloods.apps.BloodsConfig',
     'ckeditor',
     'tinymce',
 ]
@@ -116,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 

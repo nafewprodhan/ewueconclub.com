@@ -14,7 +14,7 @@ def redirectEvents(request):
 def events(request):
 
     events, search_query = searchEvents(request)
-    custom_range, events = paginateEvents(request, events, 4)
+    custom_range, events = paginateEvents(request, events, 10)
 
     event_cats = EventCategorie.objects.all()
 
@@ -23,16 +23,14 @@ def events(request):
     return render(request, 'events/events.html', context)
 
 def eventCategory(request,pk):
-
     event_cats = EventCategorie.objects.all()
     event_cat = EventCategorie.objects.get(id=pk)
-
+    
+    req_cut_url =  str(request.path[25:-1])
     events_year = event_cat.event_set.all()
-
     custom_range, events = paginateEvents(request, events_year, 4)
 
-    context = {'event_cats': event_cats, 'custom_range': custom_range, 'events_year': events}
-
+    context = {'event_cats': event_cats, 'custom_range': custom_range, 'events_year': events, 'req_url': req_cut_url }
     return render(request, 'events/events.html', context)
 
 
@@ -40,6 +38,11 @@ def event(request,pk):
 
     eventObj = Event.objects.get(id=pk)
     form = ReviewForm()
+
+    eventCat = eventObj.event_categorie
+
+    organizedEC = eventObj.executive_committee
+    organizedMR = eventObj.moderator
 
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -51,4 +54,4 @@ def event(request,pk):
         messages.success(request, 'Your comment was successfully submitted!')
         return redirect('event', pk=eventObj.id)
 
-    return render(request, 'events/single-event.html', {'event': eventObj, 'form': form})
+    return render(request, 'events/single-event.html', {'event': eventObj, 'form': form, 'organizedec': organizedEC, 'organizedmr': organizedMR, 'eventcat': eventCat})
