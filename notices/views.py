@@ -13,13 +13,29 @@ def notices(request):
 
     notices = Notice.objects.all()
 
+    notice_alum = []
+    notice_gm = []
+
     for notice in notices:
-        # print(notice.notice_to)
-        if str(notice.notice_to) == "AL":
-            print("Notice- alum " + notice.title)
+        if str(notice.notice_to) == "GM":
+            notice_alum.append(notice)
+        elif str(notice.notice_to) == "AL":
+            notice_gm.append(notice)
 
-    for profile in profile_al:
-        print(profile.email)
+    print(notice_alum)
+    print(notice_gm)
+
+    # for profile in profile_al:
+    #     print(profile.email)
+
+    context = {'notices': notices, 'notice_alum': notice_alum, 'notice_gm': notice_gm}
         
+    return render(request, 'notices/notices.html', context)
 
-    return render(request, 'notices/notices.html')
+
+def notice(request, pk):
+    notice = Notice.objects.get(id=pk)
+
+    context = {'notice': notice}
+
+    return render(request, 'notices/single-notice.html', context)

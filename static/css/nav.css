@@ -52,8 +52,11 @@ span.navbar-toggler-icon {
     font-family: 'Volte Medium';
     letter-spacing: 1.1px;
     font-size: 1.02rem;
-    color: white !important;
     padding: 0.4rem 0.8rem !important;
+}
+
+.cs-mnl {
+    color: white !important;
 }
 
 .nav-link:hover {

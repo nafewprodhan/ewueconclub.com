@@ -1,0 +1,29 @@
+.cs-nl {
+    color: var(--logo-main-color) !important;
+}
+
+.active {
+    background: var(--logo-main-color) !important;
+    color: white;
+    border-color: var(--logo-main-color);
+}
+
+.nav-tabs .nav-item.show, .nav-tabs .nav-link.active {
+    color: white !important;
+    border-color: var(--logo-main-color) var(--logo-main-color) var(--logo-main-color);
+}
+
+.nav-tabs {
+    border-bottom: none !important;
+    color: white !important;
+}
+
+.nav-tabs:hover {
+    border-color: var(--logo-main-color);
+}
+
+.tab-pane {
+    background-color: transparent !important;
+    color: black !important;
+    margin: 1rem 0;
+}

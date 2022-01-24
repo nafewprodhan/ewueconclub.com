@@ -1,12 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'main.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/notices.css' %}">
+{% endblock head %}
+
+
+{% block content %}
+<h1>Notices</h1>
+
+<div class="container">
+    <div class="row">
+        <div style="position: relative; top:3rem;">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link cs-nl active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">All Notices</button>
+                  <button class="nav-link cs-nl" id="nav-alum-tab" data-bs-toggle="tab" data-bs-target="#nav-alum" type="button" role="tab" aria-controls="nav-alum" aria-selected="false">General Member</button>
+                  <button class="nav-link cs-nl" id="nav-gm-tab" data-bs-toggle="tab" data-bs-target="#nav-gm" type="button" role="tab" aria-controls="nav-gm" aria-selected="false">Alumnus</button>
+                </div>
+            </nav>
+            <div style="padding:1rem; border: 1px solid var(--logo-main-color);" class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+                        {% for notice in notices %}
+                            {% if notice.is_published %}
+                                <span>{{ notice.pblished_timestamp.day }} || {{ notice.pblished_timestamp|date:"M" }}</span>
+                                <a href="{% url 'notice' notice.id %}">{{notice.title}}</a><br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-gm" role="tabpanel" aria-labelledby="nav-gm-tab">
+                        {% for gm_notice in notice_gm %}
+                            {% if gm_notice.is_published %}
+                                <span>{{ gm_notice.pblished_timestamp.day }} || {{ gm_notice.pblished_timestamp.month }}</span>
+                                <a href="{% url 'notice' gm_notice.id %}">{{gm_notice.title}}</a><br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-alum" role="tabpanel" aria-labelledby="nav-alum-tab">
+                        {% for alum_notice in notice_alum %}
+                            {% if alum_notice.is_published %}
+                                <span>{{ alum_notice.pblished_timestamp.day }} || {{ alum_notice.pblished_timestamp.month }}</span>
+                                <a href="{% url 'notice' alum_notice.id %}">{{alum_notice.title}}</a><br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+
+{% endblock script %}
