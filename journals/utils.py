@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Eblog, EblogTag
+from .models import Journals, JournalKeyword
 
 def paginateItems(request, items, results):
 
@@ -34,35 +34,35 @@ def paginateItems(request, items, results):
 def searchItems(request):
 
     search_query = ''
-    all_blogs = ''
+    all_journals = ''
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
-    if request.GET.get('all_blogs'):
-        all_blogs = request.GET.get('all_blogs')
+    if request.GET.get('all_journals'):
+        all_journals = request.GET.get('all_journals')
 
-    eblog_tags = EblogTag.objects.filter(name__icontains=search_query)
+    keyword = JournalKeyword.objects.filter(keyword__icontains=search_query)
     
     # ==================
     
     # =====================
 
-    if search_query == '' and all_blogs == '':
-        items = Eblog.objects.filter(is_published=True)
-    elif search_query and all_blogs == '':
-        items = Eblog.objects.distinct().filter(
+    if search_query == '' and all_journals == '':
+        items = Journals.objects.filter(is_published=True)
+    elif search_query and all_journals == '':
+        items = Journals.objects.distinct().filter(
             Q(is_published=True) &
             (Q(title__icontains=search_query) |
-            Q(body__icontains=search_query) |
-            Q(eblog_tags__in=eblog_tags))
+            Q(abstract__icontains=search_query) |
+            Q(keyword__in=keyword))
         )
     else:
-        items = Eblog.objects.distinct().filter(
+        items = Journals.objects.distinct().filter(
             Q(is_published=True) &
             (Q(title__icontains=search_query) |
-            Q(body__icontains=search_query) |
-            Q(eblog_tags__in=eblog_tags)) &
-            Q(eblog_cats__title=all_blogs)
+            Q(abstract__icontains=search_query) |
+            Q(keyword__in=keyword)) &
+            Q(all_journals__category=all_journals)
         )
     
-    return items, search_query, all_blogs
+    return items, search_query, all_journals

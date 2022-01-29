@@ -24,7 +24,7 @@
         <section style="padding: 0 !important; margin: 0 !important;" class="col-lg-8">
             <div class="breadcrumb-cs">
                 <a href="{% url 'blogs' %}">Blogs</a> >> 
-                <a href="{% url 'blog-categorie' blog_cat.id %}">{{blog_cat.title}}</a> >> 
+                <a href="{% url 'blogs' %}?all_blogs={{blog_cat.title}}">{{blog_cat.title}}</a> >> 
                 <a>{{blog.title}}</a>
             </div>
             <div style="display: flex; flex-direction:column; gap:0;" id="event-details-info-container">
@@ -78,15 +78,20 @@
             <h3>Recent blogs</h3>
 
             <ul>
-                {% for rblog in blogs %}
+                {% for recent_blog in blogs %}
 
-                <li><a href="{% url 'blog' rblog.id %}">{{ rblog.title }}</a></li>
+                <li><a href="{% url 'blog' recent_blog.id %}">{{ recent_blog.title }}</a></li>
 
                 {% endfor %}
             </ul>
 
             <h3>Popular blogs</h3>
             <h3>Related blogs</h3>
+            {% for rblog in rblogs %}
+
+                <li><a href="{% url 'blog' rblog.id %}">{{ rblog.title }}</a></li>
+
+            {% endfor %}
             
         </section>
     </div>

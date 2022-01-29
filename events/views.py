@@ -14,7 +14,7 @@ def redirectEvents(request):
 def events(request):
 
     events, search_query = searchEvents(request)
-    custom_range, events = paginateEvents(request, events, 10)
+    custom_range, events = paginateEvents(request, events, 2)
 
     event_cats = EventCategorie.objects.all()
 

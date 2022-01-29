@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'eblogs.apps.EblogsConfig',
     'notices.apps.NoticesConfig',
-    'epub.apps.EpubConfig',
+    'journals.apps.JournalsConfig',
     'bloods.apps.BloodsConfig',
-    'ckeditor',
+    'contact.apps.ContactConfig',
+    'django_filters',
     'tinymce',
 ]
 

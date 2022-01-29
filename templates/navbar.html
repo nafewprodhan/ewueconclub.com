@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cs-mnl" href="#">Contact</a>
+                        <a class="nav-link cs-mnl" href="{% url 'contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cs-mnl" href="{% url 'notices' %}">Notice</a>
@@ -54,7 +54,7 @@
                             ePub
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Research Paper</a></li>
+                            <li><a class="dropdown-item" href="{% url 'journals' %}">Journals</a></li>
                             <li><a class="dropdown-item" href="{% url 'blogs' %}">Blog</a></li>
                         </ul>
                     </li>
@@ -97,8 +97,6 @@
 </nav>
 
 {% endblock content %}
-
-
 
 {% block script %}
 

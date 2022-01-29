@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+
+{% endblock head %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <form style="position: relative; top:6rem;" action="{% url 'journals' %}" method="get">
+            {% csrf_token %}
+            <!-- {{journal_form.form.as_p}}
+            <input type="submit" value="Search"> -->
+
+            <input type="text" name="search_query" id=""  value="{{search_query}}">
+            <select name="all_journals" id="">
+                <option value="">All Journals</option>
+                {% for cat in journal_cat %}
+                    {% if cat.category|stringformat:"s" == all_journals %}
+                        <option value="{{cat.category}}" selected>{{ cat.category }}</option>
+                    {% else %}
+                        <option value="{{ cat.category }}">{{cat.category}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Search">
+        </form>
+
+        <div style="position: relative; top:8rem;"  >
+            {% for journal in journals %}
+                <h1>{{ journal.title }}</h1>
+            {% endfor %}
+            {% include 'pagination_adv.html' with queryset=journals custom_range=custom_range %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

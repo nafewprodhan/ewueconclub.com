@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock head %}
+
+
+
+{% block content %}
+
+<div class="gap-helper"></div>
+
+<!-- <div id="top-ab-color"></div> -->
+
+<section id="all-things" class="container">
+    <div class="row d-flex justify-content-between flex-things">
+    
+        <div id="items-container" class="col-lg-12">
+
+            <section id="search-form-section" class="container">
+                <div class="row">
+                    <div class="m-auto">
+                    <form class="search-form" action="{% url 'blogs' %}" method="GET">
+                        {% csrf_token %}
+
+                            <input type="text" name="search_query" id=""  value="{{search_query}}">
+                            <select name="all_blogs" id="">
+                                <option value="">All Blogs</option>
+                                {% for cat in blog_cats %}
+                                    {% if cat.title|stringformat:"s" == all_blogs %}
+                                        <option value="{{cat.title}}" selected>{{ cat.title }}</option>
+                                    {% else %}
+                                        <option value="{{ cat.title }}">{{cat.title}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Search">
+                    </form>
+                    </div>
+                </div>
+            </section>
+
+            <div class="blog-container">
+
+            {% for blog in blogs %}
+
+                <div class="singel-blog">
+                    <img class="img-fluid blog-img" src="{{blog.thumbnail.url}}" alt="">
+                    <h1 style="margin-top: 0.5rem;"><a href="{% url 'blog' blog.id %}">{{blog.title}}</a></h1>
+                    <div class="blog-writer">
+                        <p>written by: {{blog.blogger}}</p>
+                    </div>
+                    
+                    <p class="blog-body">{{blog.body|slice:'0:100'|safe}}...</p>
+                </div>
+
+
+            {% endfor %}
+        </div>
+        {% include 'eblogs/pagination_blog.html' with queryset=blogs custom_range=custom_range %}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block script %}
+
+
+{% endblock script %}
