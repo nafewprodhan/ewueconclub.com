@@ -31,6 +31,7 @@ urlpatterns = [
     path('update-experience/<str:pk>/', views.updateExperience, name="update-experience"),
     path('delete-experience/<str:pk>/', views.deleteExperience, name="delete-experience"),
 
+    path('search-me/', views.searchMe, name='search-me'),
 
     # path('inbox/', views.inbox, name="inbox"),
     # path('message/<str:pk>/', views.viewMessage, name="message"),

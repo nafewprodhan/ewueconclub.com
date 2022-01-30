@@ -7,8 +7,8 @@ import uuid
 class Profile(models.Model):
 
     st_al_list = (
-        ('student', 'Student'),
-        ('alumnus', 'Alumnus'),
+        ('Student', 'Student'),
+        ('Alumni', 'Alumni'),
     )
 
     institution_list = (

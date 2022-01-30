@@ -4,12 +4,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.urls import conf
 from django.db.models import Q
 
 from .models import Experience, Profile, Executivecommittiee, Moderator
 from .forms import CustomUserCreationForm, EducationForm, ExperienceForm, ProfileForm, SkillForm
-
+from .utils import paginateItems, searchItems
 
 # Create your views here.
 
@@ -356,6 +355,23 @@ def deleteSkill(request, pk):
     context = {'object': skill}
     return render(request, 'delete_template.html', context)
 
+
+def searchMe(request):
+    items, search_query, item = searchItems(request)
+    custom_range, items = paginateItems(request, items, 10)
+    type_pro = ['Student', 'Alumni']
+
+    print(item)
+
+    context = {
+        'profiles': items,
+        'search_query': search_query,
+        'item': item,
+        'custom_range': custom_range,
+        'type_pro': type_pro
+    }
+
+    return render(request, 'user/search-me.html', context)
 
 # @login_required(login_url='login')
 # def inbox(request):
