@@ -1,3 +1,4 @@
+from lib2to3.pytree import type_repr
 from django.dispatch.dispatcher import receiver
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
@@ -8,7 +9,7 @@ from django.db.models import Q
 
 from .models import Experience, Profile, Executivecommittiee, Moderator
 from .forms import CustomUserCreationForm, EducationForm, ExperienceForm, ProfileForm, SkillForm
-from .utils import paginateItems, searchItems
+from .utils import paginateItems, searchItems, paginateBloods, searchBloods
 
 # Create your views here.
 
@@ -355,10 +356,10 @@ def deleteSkill(request, pk):
     context = {'object': skill}
     return render(request, 'delete_template.html', context)
 
-
+@login_required(login_url='login')
 def searchMe(request):
     items, search_query, item = searchItems(request)
-    custom_range, items = paginateItems(request, items, 10)
+    custom_range, items = paginateItems(request, items, 3)
     type_pro = ['Student', 'Alumni']
 
     print(item)
@@ -372,6 +373,31 @@ def searchMe(request):
     }
 
     return render(request, 'user/search-me.html', context)
+
+def bloodSearch(request):
+
+    items, search_query, item = searchBloods(request)
+    custom_range, items = paginateBloods(request, items, 3)
+    type_pro = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+    location_pro = ['Banasree', 'Aftabnagar']
+    
+    print(item)
+
+    # for typ in type_pro:
+    #     if typ == search_query:
+    #         print("found", typ)
+    #     else: print("notfo " + search_query +" "+ typ)
+
+    context = {
+        'profiles': items,
+        'search_query': search_query,
+        'item': item,
+        'custom_range': custom_range,
+        'type_pro': type_pro,
+        'location_pro': location_pro,
+    }
+
+    return render(request, 'user/blood-search.html', context)
 
 # @login_required(login_url='login')
 # def inbox(request):

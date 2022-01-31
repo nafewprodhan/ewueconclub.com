@@ -12,13 +12,23 @@
 
 <div class="container">
     <div style="position: relative; top:7rem;" class="row">
-        <form class="search-form" action="{% url 'search-me' %}" method="GET">
+        <form class="search-form" action="{% url 'blood-search' %}" method="GET">
             {% csrf_token %}
 
-                <input type="text" name="search_query" id=""  value="{{search_query}}">
+                <select name="search_query" id="">
+                    <option value="">All group</option>
+                    {% for g in type_pro %}
+                        {% if search_query == g %}
+                            <option value="{{g}}" selected>{{g}}</option>
+                        {% else %}
+                            <option value="{{g}}">{{g}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+
                 <select name="item" id="">
-                    <option value="">Student/Alumni</option>
-                    {% for op in type_pro %}
+                    <option value="">All location</option>
+                    {% for op in location_pro %}
                         {% if item == op %}
                             <option value="{{op}}" selected>{{op}}</option>
                         {% else %}

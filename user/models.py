@@ -25,11 +25,17 @@ class Profile(models.Model):
     blood_group_list = (
         ('A+', 'A+'),
         ('A-', 'A-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
     )
 
     location_list = (
-        ('banasree', 'Banasree'),
-        ('aftabnagar', 'Aftabnagar'),
+        ('Banasree', 'Banasree'),
+        ('Aftabnagar', 'Aftabnagar'),
     )
 
     user = models.OneToOneField(
