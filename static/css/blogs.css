@@ -47,8 +47,6 @@ body::after {
 }
 
 #all-things {
-    position: relative;
-    top: 4rem !important;
     height: auto;
 }
 
@@ -152,19 +150,6 @@ ul#list-items {
     ul#list-items {
         height: 250px;
     }
-}
-
-.search-form {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin: 0 auto !important;
-    margin-bottom: 4rem !important;
-    padding: 0.2rem;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
 .search-container {

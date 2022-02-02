@@ -11,20 +11,24 @@
 
 <div class="container">
     <div class="row">
-        <div style="position: relative; top:3rem;">
+        <main style="position: relative; top:3rem; margin-bottom: 4rem">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button class="nav-link cs-nl active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">All Notices</button>
-                  <button class="nav-link cs-nl" id="nav-alum-tab" data-bs-toggle="tab" data-bs-target="#nav-alum" type="button" role="tab" aria-controls="nav-alum" aria-selected="false">General Member</button>
-                  <button class="nav-link cs-nl" id="nav-gm-tab" data-bs-toggle="tab" data-bs-target="#nav-gm" type="button" role="tab" aria-controls="nav-gm" aria-selected="false">Alumnus</button>
+                  <button class="nav-link cs-nl active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">Recent Notice</button>
+                  <button class="nav-link cs-nl" id="nav-alum-tab" data-bs-toggle="tab" data-bs-target="#nav-alum" type="button" role="tab" aria-controls="nav-alum" aria-selected="false">Members</button>
+                  <button class="nav-link cs-nl" id="nav-gm-tab" data-bs-toggle="tab" data-bs-target="#nav-gm" type="button" role="tab" aria-controls="nav-gm" aria-selected="false">Alumni</button>
                 </div>
             </nav>
             <div style="padding:1rem; border: 1px solid var(--logo-main-color);" class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
                         {% for notice in notices %}
                             {% if notice.is_published %}
-                                <span>{{ notice.pblished_timestamp.day }} || {{ notice.pblished_timestamp|date:"M" }}</span>
+                            <div class="s-notice-con">
+                                <div class="notice-time-con">
+                                    <p class="n-day">{{ notice.pblished_timestamp.day }}</p><p class="n-month">{{ notice.pblished_timestamp|date:"M" }}</p>
+                                </div>
                                 <a href="{% url 'notice' notice.id %}">{{notice.title}}</a><br>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -32,8 +36,12 @@
                     <div class="tab-pane fade" id="nav-gm" role="tabpanel" aria-labelledby="nav-gm-tab">
                         {% for gm_notice in notice_gm %}
                             {% if gm_notice.is_published %}
-                                <span>{{ gm_notice.pblished_timestamp.day }} || {{ gm_notice.pblished_timestamp.month }}</span>
+                            <div class="s-notice-con">
+                                <div class="notice-time-con">
+                                    <p class="n-day">{{ gm_notice.pblished_timestamp.day }}</p><p class="n-month">{{ gm_notice.pblished_timestamp|date:"M" }}</p>
+                                </div>                           
                                 <a href="{% url 'notice' gm_notice.id %}">{{gm_notice.title}}</a><br>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -41,20 +49,88 @@
                     <div class="tab-pane fade" id="nav-alum" role="tabpanel" aria-labelledby="nav-alum-tab">
                         {% for alum_notice in notice_alum %}
                             {% if alum_notice.is_published %}
-                                <span>{{ alum_notice.pblished_timestamp.day }} || {{ alum_notice.pblished_timestamp.month }}</span>
+                            <div class="s-notice-con">
+                                <div class="notice-time-con">
+                                    <p class="n-day">{{ alum_notice.pblished_timestamp.day }}</p><p class="n-month">{{ alum_notice.pblished_timestamp|date:"M" }}</p>
+                                </div>                       
                                 <a href="{% url 'notice' alum_notice.id %}">{{alum_notice.title}}</a><br>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
 
             </div>
-        </div>
+        </main>
     </div>
 </div>
+
+<!-- <div class="container">
+    <div class="row" style="padding: 0.8rem;">
+        <section class="notice-timer">
+            <div class="wrap">
+                <h1>Keep an eye on the TIME</h1>
+                <div class="dating"><p class="dating--date">28.05.2018</p><p class="dating--time">16:31</p></div>
+            </div>
+        </section>
+    </div>
+</div> -->
 
 {% endblock content %}
 
 
 {% block script %}
+
+<script>
+	 
+        // DATE
+        function DateTimeZone() { 
+    
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;  //January is 0!
+            var yyyy = today.getFullYear();
+    
+            if(dd < 10) {
+                dd = '0'+ dd
+            } 
+    
+            if(mm < 10) {
+                mm = '0'+mm
+            } 
+    
+            today = dd + '.' + mm + '.' + yyyy;
+
+            document.querySelector('.dating--date').innerHTML = '<i class="far fa-calendar-check"></i>' + " " + today
+    
+            //$('.dating--date').html( today ); // PUT CLASS YOUR DIV
+    
+        }
+        DateTimeZone();
+    
+        // TIME
+        function ClockTimeZone() { 
+    
+            var TimezoneOffset = 6 // here enter your time zone (GMT) = +5 (in Tashkent)
+    
+            var localTime = new Date(); 
+            var ms = localTime.getTime() + (localTime.getTimezoneOffset() * 60000) + TimezoneOffset * 3600000; 
+    
+            var time = new Date(ms);  
+            var hour = time.getHours();  
+            var minute = time.getMinutes(); 
+            var second = time.getSeconds(); 
+    
+            var temp = "" + ((hour < 10) ? "0" : "") + hour; 
+            temp += ((minute < 10) ? ":0" : ":") + minute; 
+            temp += ((second < 10) ? ":0" : ":") + second; 
+    
+            document.querySelector('.dating--time').innerHTML = '<i class="far fa-clock"></i>' + " " + temp
+           // $('.dating--time').html( temp ); 
+            
+            setTimeout(ClockTimeZone,1000); 
+        } 
+        ClockTimeZone();
+    
+</script>
 
 {% endblock script %}

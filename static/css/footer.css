@@ -10,8 +10,7 @@ a:focus {
 }
 
 .footer {
-    position: relative;
-    top: 15rem;
+    margin-top: 6rem;
     padding-top: 45px;
     /* background: var(--primary-theme-dark-color); */
     background: var(--logo-main-color);

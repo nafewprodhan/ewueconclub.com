@@ -4,8 +4,8 @@ body {
 
 .form-template {
     width: 100%;
-    position: relative;
-    top: 6rem;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
     z-index: 1;
     background: transparent;
     height: auto;

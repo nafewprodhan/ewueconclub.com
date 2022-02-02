@@ -38,12 +38,12 @@
         {% for message in messages %}
 
             {% if message.tags == "error" %}
-                <div style="position: relative; top: 5rem; max-width:450px; margin: 0 auto;" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div style="position: absolute; top: 5%; left:50%; transform:translateX(-50%); z-index:10000; max-width:450px; margin: 0 auto;" class="alert alert-danger alert-dismissible fade show" role="alert">
                     {{message}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% else %}
-                <div style="position: relative; top: 5rem; max-width:450px; margin: 0 auto;" class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <div style="position: absolute; top: 5%; left:50%; transform:translateX(-50%); z-index:10000; max-width:450px; margin: 0 auto;" class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
                     {{message}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
                 </div>

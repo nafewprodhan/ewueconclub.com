@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Profile, Skill, Education, Experience, Executivecommittiee, Moderator
+from .models import Profile, Skill, Education, Experience, Executivecommittiee, Moderator, Message
 
 # Register your models here.
 
@@ -16,6 +16,6 @@ admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Experience)
 admin.site.register(Education)
 admin.site.register(Skill)
-
+admin.site.register(Message)
 admin.site.register(Executivecommittiee)
 admin.site.register(Moderator)

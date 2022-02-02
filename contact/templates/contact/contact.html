@@ -1,8 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
-
-
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
 
 {% endblock head %}
 
@@ -10,19 +9,91 @@
 
 {% block content %}
 
-<h1>Contact Us</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-actions">
-      <button type="submit">Send</button>
+<main class="contact-main">
+  <h1 class="contact-us-header"><i class="fas fa-paper-plane"></i> Contact us</h1>
+  <div class="contact-content">
+    <section class="address-sec">
+      <div class="fix-align">
+      <address class="content-sec">
+          <p class="fas fa-map-marker-alt con-icon"></p>
+          <div class="info-con">
+            <p class="info-header">Postal Address</p>
+            <p class="info">A/2, Jahurul Islam Avenue | Jahurul Islam City | Aftabnagar |
+              Dhaka-1212 | Bangladesh</p>
+          </div>
+      </address>
+      <div class="content-sec">
+        <p class="fas fa-mobile-alt con-icon"></p>
+        <div class="info-con">
+          <p class="info-header">Mobile</p>
+          <p class="info">+880 1862902425</p>
+        </div>
+      </div>
+      <div class="content-sec">
+        <p class="fas fa-envelope-open con-icon"></p>
+        <div class="info-con">
+          <p class="info-header">Email</p>
+          <p class="info">contact@ewueconclub.com</p>
+        </div>
+      </div>
+      <div class="content-sec">
+        <p class="fas fa-globe con-icon"></p>
+        <div class="info-con">
+          <p class="info-header">Website</p>
+          <p class="info">www.ewueconclub.com</p>
+        </div>
+      </div>
     </div>
-</form>
+    </section>
+
+    <section class="mail">
+      <form class="contact-form" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="field-div">
+            <p class="label-p"><label for="id_{{field.label|lower}}">{{ field.label }}*</label></p>
+            <p class="input-p">{{ field }}</p>
+          </div>
+          {% endfor %}
+          <div class="form-actions">
+            <button class="send-btn" type="submit">Send message</button>
+          </div>
+      </form>
+    </section>
+    
+    <section style="width: 100%; margin-top:1rem;" class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.410733048562!2d90.42337781493339!3d23.768383984580463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c78bc678693d%3A0x3e87f7b866c0e38!2sEast%20West%20University!5e0!3m2!1sen!2sbd!4v1643708700202!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+  </div>
+  
+
+</main>
 
 {% endblock content %}
 
 
 
 {% block script %}
+
+<script>
+  selecLabel = document.getElementsByTagName('label');
+  selectInput = document.getElementsByTagName('input');
+  selectTextArea = document.getElementsByTagName('textarea');
+
+  for(let i=0; i<selectInput.length; i++) {
+    selectInput[i].addEventListener("click", () => {
+      selecLabel[i-1].style.top = "0px";
+      selecLabel[i-1].style.color = "#fff7cb";
+      selecLabel[i-1].style.transition = "all 0.4s"
+    })
+  };
+
+  selectTextArea[0].addEventListener('click', function() {
+    selecLabel[3].style.top = "0px";
+    selecLabel[3].style.color = "#fff7cb";
+    selecLabel[3].style.transition = "all 0.4s"
+  })
+  
+</script>
 
 {% endblock script %}

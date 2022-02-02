@@ -8,7 +8,6 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.registerUser, name="register"),
 
-    # path('', views.profiles, name="profiles"),
     path('profile/<str:pk>/', views.userProfile, name="user-profile"),
     path('account/', views.userAccount, name="account"),
 
@@ -32,9 +31,9 @@ urlpatterns = [
     path('delete-experience/<str:pk>/', views.deleteExperience, name="delete-experience"),
 
     path('search-me/', views.searchMe, name='search-me'),
-    path('blood-search/', views.bloodSearch, name="blood-search")
+    path('blood-search/', views.bloodSearch, name="blood-search"),
 
-    # path('inbox/', views.inbox, name="inbox"),
-    # path('message/<str:pk>/', views.viewMessage, name="message"),
-    # path('create-message/<str:pk>/', views.createMessage, name="create-message"),
+    path('inbox/', views.inbox, name="inbox"),
+    path('message/<str:pk>/', views.viewMessage, name="message"),
+    path('create-message/<str:pk>/', views.createMessage, name="create-message"),
 ]

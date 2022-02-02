@@ -1,0 +1,177 @@
+p {
+    margin: 0;
+}
+
+.contact-main {
+    width: 100%;
+    position: relative;
+    top: 3.2rem;
+}
+
+.contact-us-header {
+    width: 100%;
+    position: relative;
+    padding: 4rem 0.5rem;
+    text-align: center;
+    font-family: 'Volte Bold';
+    font-size: 3rem;
+    /* color: var(--logo-main-color); */
+    color: #ffae00;
+    margin: 0;
+}
+
+.contact-us-header::after {
+    content: "";
+    background-image: url(/static/images/pattern.jpg);
+    background-repeat: repeat;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.08;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.address-sec {
+    width: 50%;
+    background-image: linear-gradient(to left top, #a105acd7, #db0473d7, #ec1e3df1), url('/static/images/ewu.jpg');
+    color: white;
+    padding: 2rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.fix-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.content-sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    max-width: 500px;
+    margin: 1rem 0.5rem;
+}
+
+.con-icon {
+    padding: 0.5rem;
+    margin-right: 1rem;
+    font-size: 3rem;
+    color: rgb(255, 217, 0);
+}
+
+.info-con {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+.info-header {
+    font-family: 'Volte Semibold';
+    font-size: 1.5rem;
+    color: #ffd900;
+}
+
+.info {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.mail {
+    width: 50%;
+    background-image: linear-gradient(to left top, #062870e7, #083880ea), url('/static/images/ewu-bg-2.jfif');
+    padding: 2rem 0.5rem;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.contact-form {
+    max-width: 500px;
+}
+
+.field-div {
+    margin-bottom: 0.8rem;
+}
+
+p.label-p {
+
+}
+
+p.label-p label {
+    font-size: 1.2rem;
+    font-family: 'Volte Medium';
+    color: #ffd900;
+    position: relative;
+    top: 25px;
+}
+
+p.input-p {
+
+}
+
+p.input-p input {
+    width: 100% !important;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid #ffd900;
+    outline: none;
+    color: #ffd900;
+    font-size: 1.1rem;
+}
+
+p.input-p textarea {
+    width: 100% !important;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid #ffd900;
+    outline: none;
+    height: 150px;
+    color: #ffd900;
+}
+
+p.input-p input:focus, p.input-p textarea:focus {
+    border-bottom: 3px solid #fff7cb;
+}
+
+.send-btn {
+    width: 100%;
+    border: none;
+    background: #ffae00;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: 'Volte Semibold';
+    border-radius: 10px;
+    padding: 0.4rem 0.2rem;
+}
+
+@media screen and (max-width: 1150px) {
+    .contact-content {
+        flex-direction: column;
+    }
+    .address-sec {
+        width: 100%;
+    }
+
+    .mail {
+        width: 100%;
+    }
+}

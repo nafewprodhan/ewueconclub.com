@@ -1,0 +1,61 @@
+.search-section {
+    background-image: linear-gradient(to left top, #062870c0, #083880af), url('/static/images/library.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.search-form {
+    margin-top: 3.8rem;
+    padding: 3rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-content: center;
+    justify-content: center;
+}
+
+.search-text, .search-select {
+    width: 40%;
+    height: 45px;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 6px;
+}
+
+.search-text, .search-select:focus {
+    outline: none;
+}
+
+.search-text {
+    max-width: 450px;
+    font-size: 1rem;
+}
+
+.search-select {
+    max-width: 300px;
+    font-family: 'Volte Medium';
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    background-color: #e0eefd;
+    cursor: pointer;
+}
+
+.select-value {
+    font-family: 'Volte Medium';
+    font-size: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.search-btn {
+    border: none;
+    padding: 0.2rem 1.5rem;
+    background-color: var(--logo-secondary-color);;
+    color: white;
+    font-family: 'Volte Semibold';
+    font-size: 1.5rem;
+    border-radius: 6px;
+}
