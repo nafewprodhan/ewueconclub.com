@@ -12,61 +12,50 @@
 {% block content %}
 
 <!-- <div id="top-ab-color"></div> -->
+    <section class="search-section">
+        <div class="container">
+            <div class="row m-auto">
+                <form class="search-form" action="{% url 'blogs' %}" method="GET">
+                    {% csrf_token %}
 
-<section id="all-things">
-    <div class="row d-flex justify-content-between flex-things">
-    
-        <div id="items-container" class="col-lg-12">
+                        <input type="text" class="search-text" placeholder="Search by title & keyword" name="search_query" id=""  value="{{search_query}}">
+                        <select class="search-select" name="all_blogs" id="">
+                            <option class="select-value" value="">All Blogs</option>
+                            {% for cat in blog_cats %}
+                                {% if cat.title|stringformat:"s" == all_blogs %}
+                                    <option class="select-value" value="{{cat.title}}" selected>{{ cat.title }}</option>
+                                {% else %}
+                                    <option class="select-value" value="{{ cat.title }}">{{cat.title}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <input class="search-btn" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </section>
 
-            <section class="search-section">
-                <div class="container">
-                    <div class="row m-auto">
-                        <form class="search-form" action="{% url 'blogs' %}" method="GET">
-                            {% csrf_token %}
-
-                                <input type="text" class="search-text" placeholder="Search by title & keyword" name="search_query" id=""  value="{{search_query}}">
-                                <select class="search-select" name="all_blogs" id="">
-                                    <option class="select-value" value="">All Blogs</option>
-                                    {% for cat in blog_cats %}
-                                        {% if cat.title|stringformat:"s" == all_blogs %}
-                                            <option class="select-value" value="{{cat.title}}" selected>{{ cat.title }}</option>
-                                        {% else %}
-                                            <option class="select-value" value="{{ cat.title }}">{{cat.title}}</option>
-                                        {% endif %}
-                                    {% endfor %}
-                                </select>
-                                <input class="search-btn" type="submit" value="Search">
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <div class="blog-container container">
-
+    <div class="container">
+        <div class="row" style="margin-top: 2rem; margin-bottom: 2rem;">
+        <div class="blog-container">
             {% for blog in blogs %}
-
                 <div class="singel-blog">
                     <img class="img-fluid blog-img" src="{{blog.thumbnail.url}}" alt="">
-                    <h1 style="margin-top: 0.5rem;"><a href="{% url 'blog' blog.id %}">{{blog.title}}</a></h1>
+                    <span class="b-cat">{{ blog.eblog_cats }}</span>
+                    <h1 class="blog-header"><a href="{% url 'blog' blog.id %}">{{blog.title}}</a></h1>
                     <div class="blog-writer">
-                        <p>written by: {{blog.blogger}}</p>
+                        <span style="color:var(--logo-main-color);"><i class="fa-solid fa-user"></i> By: </span><a style="color: var(--logo-secondary-color);" href="{% url 'user-profile' blog.blogger.id %}"> {{blog.blogger}}</a>
                     </div>
                     
-                    <p class="blog-body">{{blog.body|slice:'0:100'|safe}}...</p>
+                    <!-- <p class="blog-body">{{blog.body|slice:'0:100'|safe}}...</p> -->
                 </div>
-
-
             {% endfor %}
         </div>
-        <div class="container">
-            {% include 'eblogs/pagination_blog.html' with queryset=blogs custom_range=custom_range %}
-        </div>
-            </div>
-
         </div>
     </div>
-</section>
-
+<div class="container">
+    {% include 'eblogs/pagination_blog.html' with queryset=blogs custom_range=custom_range %}
+</div>
 {% endblock content %}
 
 {% block script %}

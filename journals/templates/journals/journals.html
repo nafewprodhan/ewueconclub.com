@@ -5,6 +5,7 @@
 {% block head %}
 
 <link rel="stylesheet" href="{% static 'css/cmn-search-form.css' %}">
+<link rel="stylesheet" href="{% static 'css/journals.css' %}">
 
 {% endblock head %}
 
@@ -32,12 +33,31 @@
             </form>
 </section>
 
-        <div style="position: relative; top:8rem;"  >
-            {% for journal in journals %}
-                <h1>{{ journal.title }}</h1>
-            {% endfor %}
-            {% include 'pagination_adv.html' with queryset=journals custom_range=custom_range %}
-        </div>
+
+<div class="container">
+    <div class="row" style="margin-top: 2rem; margin-bottom: 2rem;">
+    <div class="blog-container">
+        {% for journal in journals %}
+            <div class="singel-blog">
+                <span class="b-cat">{{ journal.all_journals }}</span>
+                <h1 class="blog-header"><a href="{% url 'journal' journal.id %}">{{journal.title}}</a></h1>
+                <div class="blog-writer">
+                    <span style="color:var(--logo-main-color);"><i class="fa-solid fa-user"></i> By: </span>
+                    {% for author in journal.authors.all %}
+                    <a style="color: var(--logo-secondary-color);" href="{% url 'user-profile' author.author.id %}"> {{author}}; </a>
+                    {% endfor %}
+                </div>
+                
+                <p class="blog-body"><span style="color:var(--logo-secondary-color);font-weight:bold;">Abstract: </span>{{journal.abstract|slice:'0:100'}}...</p>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+    
+<div class="container">
+    <div class="row">
+        {% include 'pagination_adv.html' with queryset=journals custom_range=custom_range %}
     </div>
 </div>
 

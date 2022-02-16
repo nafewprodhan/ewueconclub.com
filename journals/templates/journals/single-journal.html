@@ -1,41 +1,34 @@
 {% extends 'main.html' %}
 {% load static %}
 
-
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/single-blog.css' %}">
-
-<style>
-    textarea {
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        border-radius: 10px !important;
-        padding: 0.8rem !important;
-        font-size: 1.1rem !important;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/single-journal.css' %}">
 {% endblock head %}
 
-
-
 {% block content %}
+
 <div class="container">
     <div class="row flex-single-event-row">
 
         <section style="padding: 0 !important; margin: 0 !important;" class="col-lg-8">
             <div class="breadcrumb-cs">
-                <a href="{% url 'blogs' %}">Blogs</a> >> 
-                <a href="{% url 'blogs' %}?all_blogs={{blog_cat.title}}">{{blog_cat.title}}</a> >> 
-                <a>{{blog.title}}</a>
+                <a href="{% url 'journals' %}">Journals</a> >> 
+                <a href="{% url 'journals' %}?all_journals={{journal_cat}}">{{journal_cat}}</a> >> 
+                <a>{{journal.title}}</a>
             </div>
             <div style="display: flex; flex-direction:column; gap:0;" id="event-details-info-container">
-                <h1 class="s-event-name">{{blog.title}}</h1>
+                <h1 class="s-event-name">{{journal.title}}</h1>
                 <div class="author-info">
-                    <p><i class="fa-solid fa-user"></i> <a href="{% url 'user-profile' blog.blogger.id %}">{{ blog.blogger }}</a></p>
-                    <p><b>Published: </b><i class="fa-solid fa-clock"></i> {{ blog.published_timestamp }}</p>
+                    <div class="blog-writer">
+                        <span style="color:var(--logo-main-color);"><i class="fa-solid fa-user"></i> By: </span>
+                        {% for author in journal.authors.all %}
+                        <a style="color: var(--logo-secondary-color);" href="{% url 'user-profile' author.author.id %}"> {{author}}; </a>
+                        {% endfor %}
+                    </div>
+                    <p><b>Published: </b><i class="fa-solid fa-clock"></i> {{ journal.published_timestamp }}</p>
                 </div>
                 <div style="padding: 1rem !important;" id="s-event-content-div">
-                    <img src="{{blog.thumbnail.url}}" alt="" class="s-event-main-img img-fluid">
-                    <p>{{blog.body|safe}}</p>
+                    <iframe src="{{ journal.pdf_drive_link }}" width="100%" height="680" allow="autoplay"></iframe>
                 </div>
             </div>
 
@@ -43,7 +36,7 @@
                 <div class="col-lg-12 me-auto comment-column">
                     <h2 class="feedback-header">Comment</h2>
                     {% if request.user.is_authenticated %}
-                    <form class="comment-form" action="{% url 'blog' blog.id %}" method="POST">
+                    <form class="comment-form" action="{% url 'journal' journal.id %}" method="POST">
                         {% csrf_token %}
                         {% for field in form %}
                             <label for="form-label">{{field.label}}</label>
@@ -55,7 +48,7 @@
                         <a href="{% url 'login' %}?next={{request.path}}">Please login to leave a review</a>
                     {% endif %}
         
-                    {% for review in blog.eblogreview_set.all %}
+                    {% for review in journal.journalreview_set.all %}
                     <div class="comment-show-container">
                         <div class="ind-comment-wrap">
                             <a href="{% url 'user-profile' review.owner.id  %}">
@@ -76,22 +69,11 @@
 
         <aside style="padding: 0;" class="col-lg-3">
             <aside class="aside-bar">
-                <!-- <h3>Recent blogs</h3>
-    
-                <ul>
-                    {% for recent_blog in blogs %}
-    
-                    <li><a href="{% url 'blog' recent_blog.id %}">{{ recent_blog.title }}</a></li>
-    
-                    {% endfor %}
-                </ul>
-    
-                <h3>Popular blogs</h3> -->
-                <h3 class="aside-header">Related blogs</h3>
+                <p class="aside-header">Related journals</p>
 
                 <ul class="aside-lists">
-                    {% for rblog in rblogs %}
-                        <li>>> <a href="{% url 'blog' rblog.id %}">{{ rblog.title }}</a></li>      
+                    {% for rjournal in rjournals %}
+                        <li>>> <a href="{% url 'journal' rjournal.id %}">{{ rjournal.title }}</a></li>      
                     {% endfor %}
                 </ul>
                 
@@ -99,7 +81,10 @@
         </aside>
     </div>
 </div>
-
-
-
 {% endblock content %}
+
+
+
+{% block script %}
+
+{% endblock script %}

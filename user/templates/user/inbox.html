@@ -1,28 +1,39 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+{% endblock head %}
 
 {% block content %}
 <!-- Main Section -->
-<main class="inbox my-xl" style="margin-top: 5rem;">
-  <div class="content-box">
-    <h3 class="inbox__title">New Messages(<span>{{unreadCount}}</span>)</h3>
-
-    <ul class="messages">
-      {% for message in messageRequests %}
-      {% if message.is_read == False %}
-      <li class="message message--unread">
-        {% else %}
-      <li class="message">
-        {% endif %}
-
-        <a href="{% url 'message' message.id %}">
-          <span class="message__author">{{message.name}}</span>
-          <span class="message__subject">{{message.subject}}</span>
-          <span class="message__date">{{message.created}}</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+<div class="container">
+  <div class="row">
+    <main class="inbox my-xl" style="margin-top: 5rem;">
+      <div class="content-box">
+        <h3 class="inbox__title">New Messages(<span>{{unreadCount}}</span>)</h3>
+    
+        <ul class="messages">
+          {% for message in messageRequests %}
+          {% if message.is_read == False %}
+          <li class="message message--unread">
+            {% else %}
+          <li class="message">
+            {% endif %}
+            <a href="{% url 'message' message.id %}" class="message-block">
+              <img class="message-profile-img" src="{{ message.sender.profile_image.url }}" alt="">
+              <p>
+                <span class="message__author">{{message.name}}</span>
+                <span class="message__subject">{{message.subject}}</span>
+                <span class="message__date">{{message.created}}</span>
+              </p>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </main>
   </div>
-</main>
+</div>
 
 {% endblock content %}

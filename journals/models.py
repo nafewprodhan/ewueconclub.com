@@ -48,3 +48,15 @@ class JournalKeyword(models.Model):
 
     def __str__(self):
         return self.keyword
+
+class JournalReview(models.Model):
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    journal = models.ForeignKey(Journals, on_delete=models.CASCADE)
+    body = models.TextField(null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+
+    def __str__(self):
+        return str(self.journal)

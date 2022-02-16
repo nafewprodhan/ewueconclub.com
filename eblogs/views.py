@@ -9,7 +9,7 @@ from .forms import EblogReviewForm
 
 def blogs(request):
     items, search_query, all_blogs = searchItems(request)
-    custom_range, items = paginateItems(request, items, 2)
+    custom_range, items = paginateItems(request, items, 5)
 
     blog_cats = EblogCategorie.objects.all()
     print(len(items))
@@ -37,7 +37,6 @@ def blogs(request):
 def blog(request, pk):
     blog = Eblog.objects.get(id=pk)
     blog_cat = blog.eblog_cats
-    blogs = Eblog.objects.all()
     related_blogs = Eblog.objects.filter(eblog_cats= blog_cat)[0:2]
     form = EblogReviewForm()
 

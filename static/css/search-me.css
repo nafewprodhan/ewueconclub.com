@@ -1,0 +1,104 @@
+body {
+    background: linear-gradient(to right top, #cc00bb, #0050e6, #aa00cc) !important;
+    position: relative;
+    z-index: -1000;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background: #ffffffd7;
+    z-index: -1000;
+}
+
+p, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    --auto-grid-min-size: 20rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.7rem;
+    padding: 0.7rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-img {
+    font-family: 'Volte Bold';
+    border: 1px solid var(--logo-secondary-color);
+    border-radius: 20px;
+    width: 70px;
+}
+
+.other {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.profile-name {
+    font-size: 1.2rem;
+    font-family: 'Volte Medium';
+    color: var(--logo-main-color);
+}
+
+.profile-headline {
+    color: var(--logo-secondary-color);
+    font-family: 'Volte Medium';
+}
+
+.request-btn {
+    padding: 0.3rem 3rem;
+    background-color: var(--logo-secondary-color);
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Volte Semibold';
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid var(--logo-secondary-color);
+}
+
+.request-btn:hover {
+    background-color: white;
+    color: var(--logo-secondary-color);
+}
+
+.skills-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.skill {
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    background-color: #d9f5ff;
+    color: #00575e;
+}

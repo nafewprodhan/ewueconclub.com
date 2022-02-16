@@ -357,7 +357,7 @@ def deleteSkill(request, pk):
 @login_required(login_url='login')
 def searchMe(request):
     items, search_query, item = searchItems(request)
-    custom_range, items = paginateItems(request, items, 3)
+    custom_range, items = paginateItems(request, items, 9)
     type_pro = ['Student', 'Alumni']
 
     print(item)
@@ -375,16 +375,9 @@ def searchMe(request):
 def bloodSearch(request):
 
     items, search_query, item = searchBloods(request)
-    custom_range, items = paginateBloods(request, items, 3)
+    custom_range, items = paginateBloods(request, items, 6)
     type_pro = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
     location_pro = ['Banasree', 'Aftabnagar']
-    
-    print(item)
-
-    # for typ in type_pro:
-    #     if typ == search_query:
-    #         print("found", typ)
-    #     else: print("notfo " + search_query +" "+ typ)
 
     context = {
         'profiles': items,
@@ -416,7 +409,7 @@ def viewMessage(request, pk):
     context = {'message': message}
     return render(request, 'user/message.html', context)
 
-
+@login_required(login_url='login')
 def createMessage(request, pk):
     recipient = Profile.objects.get(id=pk)
     form = MessageForm()
@@ -439,7 +432,7 @@ def createMessage(request, pk):
             message.save()
 
             messages.success(request, 'Your message was successfully sent!')
-            return redirect('user-profile', pk=recipient.id)
+            return redirect('blood-search')
 
-    context = {'recipient': recipient, 'form': form}
+    context = {'recipient': recipient, 'sender': sender, 'form': form}
     return render(request, 'user/message_form.html', context)

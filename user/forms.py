@@ -94,10 +94,14 @@ class ExperienceForm(ModelForm):
 class MessageForm(ModelForm):
     class Meta:
         model = Message
-        fields = ['name', 'email', 'subject', 'body']
+        fields = ['subject', 'body', 'unit_bag', 'request_type', 'location', 'contact_information']
+        labels = {
+            'subject': 'Reason for transfusion',
+            'body': 'Patient details'
+        }
 
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'input'})
+            field.widget.attrs.update({'class': 'form-control form-control-md'})

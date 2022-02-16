@@ -26,7 +26,7 @@ body::after {
     padding: 0.6rem;
     background-color: #ffffffec;
     border-radius: 10px;
-    border: 0.7px solid rgb(224, 224, 224);
+    border: 0.7px solid #e0e0e0;
 }
 
 .blog-img {
@@ -37,11 +37,11 @@ body::after {
 }
 
 .b-cat {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Volte Medium';
     color: white;
     border-radius: 4px;
-    padding: 0.2rem 0.4rem;
+    padding: 0.1rem 0.4rem;
     /* margin-bottom: 0.3rem; */
     background-color: var(--logo-secondary-color);
 }
@@ -53,7 +53,6 @@ body::after {
 .blog-header a {
     font-size: 1.3rem;
     font-weight: bolder;
-    /* margin-top: 0.4rem; */
     text-decoration: none;
     color: var(--logo-main-color);
 }
@@ -62,15 +61,16 @@ body::after {
     margin-bottom: 0.4rem;
 }
 
-.blog-writer a {
+/* .blog-writer a {
     text-decoration: none;
-}
+} */
 
 .blog-writer a:hover, .blog-header a:hover {
     text-decoration: underline;
 }
 
 .blog-body {
-    margin: 0 !important;
+    margin: 0;
+    margin-top: 0.8rem;
     padding: 0 !important;
 }

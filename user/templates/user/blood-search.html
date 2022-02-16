@@ -3,52 +3,70 @@
 
 
 {% block head %}
-
+<link rel="stylesheet" href="{% static 'css/cmn-search-form.css' %}">
+<link rel="stylesheet" href="{% static 'css/blood-search.css' %}">
 {% endblock head %}
-
 
 
 {% block content %}
 
-<div class="container">
-    <div style="position: relative; top:7rem;" class="row">
-        <form class="search-form" action="{% url 'blood-search' %}" method="GET">
-            {% csrf_token %}
+<section class="search-section">
+    <div class="container">
+        <div class="row m-auto">
+            <form class="search-form" action="{% url 'blood-search' %}" method="GET">
+                {% csrf_token %}
 
-                <select name="search_query" id="">
-                    <option value="">All group</option>
-                    {% for g in type_pro %}
-                        {% if search_query == g %}
-                            <option value="{{g}}" selected>{{g}}</option>
-                        {% else %}
-                            <option value="{{g}}">{{g}}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
+                    <select class="search-select" name="search_query" id="">
+                        <option class="select-value" value="">All group</option>
+                        {% for g in type_pro %}
+                            {% if search_query == g %}
+                                <option class="select-value" value="{{g}}" selected>{{g}}</option>
+                            {% else %}
+                                <option class="select-value" value="{{g}}">{{g}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
 
-                <select name="item" id="">
-                    <option value="">All location</option>
-                    {% for op in location_pro %}
-                        {% if item == op %}
-                            <option value="{{op}}" selected>{{op}}</option>
-                        {% else %}
-                            <option value="{{op}}">{{op}}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Search">
-        </form>
-
-        <div>
-            {% for profile in profiles %}
-                <h1>{{profile.name}}</h1>
-            {% endfor %}
-            {% include 'user/pagination_search-me.html' with queryset=profiles custom_range=custom_range %}
+                    <select class="search-select" name="item" id="">
+                        <option class="select-value" value="">All location</option>
+                        {% for op in location_pro %}
+                            {% if item == op %}
+                                <option class="select-value" value="{{op}}" selected>{{op}}</option>
+                            {% else %}
+                                <option class="select-value" value="{{op}}">{{op}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input class="search-btn" type="submit" value="Search">
+            </form>   
         </div>
+    </div>
+</section>
 
+<div class="container" style="margin-top: 2rem;">
+    <div class="row m-auto">
+        <main class="grid-container">
+        {% for profile in profiles %}
+            <div class="profile">
+                <div class="profile-info">
+                    <p class="profile-blood">{{ profile.blood_group }}</p>
+                    <div class="other">
+                        <h1 class="profile-name">{{ profile.name }}</h1>
+                        <p class="profile-location"><span class="fa-solid fa-location-dot"></span> {{ profile.location }}</p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content:center;">
+                    <a href="{% url 'create-message' profile.id %}" class="request-btn"><span class="fa-solid fa-hand-holding-heart"></span> Request blood</a>
+                </div>
+            </div>
+        {% endfor %}
+        </main>
     </div>
 </div>
 
+<div class="container" style="margin-top: 2rem;">
+    {% include 'user/pagination_search-me.html' with queryset=profiles custom_range=custom_range %}
+</div>
 
 {% endblock content %}
 
