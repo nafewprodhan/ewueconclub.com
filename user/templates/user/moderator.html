@@ -12,13 +12,21 @@
 
 <section id="all-things">
     <div class="container">
-    <section class="row flex-things">
+    <section style="padding-top: 6rem;" class="row flex-things">
         <div id="toggle-list-things-container" class="">
             <ul id="list-items">
                 <div id="toggler-item" class="list-item"><i class="fas fa-bars"></i>  Moderator</div>
 
                 {% for eca in ec_all %}
-                <li class="list-item"><a href="{% url 'moderator' eca.id %}">{{eca.title}}</a></li>
+                <li 
+                    {% if eca.id|stringformat:"s" == req_url %}
+                        class="list-item active-list"
+                    {% else %}
+                        class="list-item"
+                    {% endif %}
+                >
+
+                <a href="{% url 'moderator' eca.id %}">{{eca.title}}</a></li>
                 {% endfor %}
                 <!-- <li class="list-item item-active"><a href="#">Executive Committee in 2020</a></li> -->
                 

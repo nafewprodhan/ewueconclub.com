@@ -83,9 +83,11 @@ def moderators(request):
 
     ec_all = Moderator.objects.all()
     ec_year = ec_all[0]
+    req_cut_url =  str(ec_year.id)
+
 
     context = {
-        'ec_all': ec_all, 'ec_year': ec_year,
+        'ec_all': ec_all, 'ec_year': ec_year, 'req_url': req_cut_url
     }
 
     return render(request, 'user/moderator.html', context)
@@ -94,9 +96,11 @@ def moderator(request, pk):
 
     ec_all = Moderator.objects.all()
     ec_year = Moderator.objects.get(id = pk)
+    req_cut_url =  str(request.path[11:-1])
 
+    print(req_cut_url)
     context = {
-        'ec_all': ec_all, 'ec_year': ec_year,
+        'ec_all': ec_all, 'ec_year': ec_year, 'req_url': req_cut_url,
     }
 
     return render(request, 'user/moderator.html', context)
@@ -106,9 +110,10 @@ def executiveCommittees(request):
 
     ec_all = Executivecommittiee.objects.all()
     ec_year = ec_all[0]
-
+    req_cut_url =  str(ec_year.id)
+    print(req_cut_url)
     context = {
-        'ec_all': ec_all, 'ec_year': ec_year,
+        'ec_all': ec_all, 'ec_year': ec_year, 'req_url': req_cut_url,
     }
 
     return render(request, 'user/executive-committee.html', context)
@@ -117,9 +122,12 @@ def executiveCommittee(request, pk):
 
     ec_all = Executivecommittiee.objects.all()
     ec_year = Executivecommittiee.objects.get(id = pk)
+    req_cut_url =  str(request.path[21:-1])
+
+    print(req_cut_url)
 
     context = {
-        'ec_all': ec_all, 'ec_year': ec_year,
+        'ec_all': ec_all, 'ec_year': ec_year, 'req_url': req_cut_url,
     }
 
     return render(request, 'user/executive-committee.html', context)

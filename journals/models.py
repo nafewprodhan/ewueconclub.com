@@ -23,6 +23,9 @@ class Journals(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-view_count', '-published_timestamp']
+
 class JournalsCategory(models.Model): 
     category = models.CharField(max_length=500)
 

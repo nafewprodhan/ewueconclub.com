@@ -7,7 +7,7 @@ Start Upcoming Event section
     padding: 0.8rem;
     background-image: var(--logo-gradient-tr-color);
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     /* background-color: rebeccapurple; */
 }

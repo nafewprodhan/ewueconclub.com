@@ -1,21 +1,34 @@
 {% extends 'main.html' %}
+{% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}">
+{% endblock head %}
 
 {% block content %}
 <!-- Main Section -->
-<main class="messagePage my-xl">
-  <div class="content-box">
-    <div class="message">
-      <a class="backButton" href="{% url 'inbox' %}"><i class="im im-angle-left"></i></a>
-      <h2 class="message__subject">{{message.subject}}</h4>
-        {% if message.sender %}
-        <a href="{% url 'user-profile' message.sender.id  %}" class="message__author">{{message.name}}</a>
-        {% else %}
-        <p class="message__author">{{message.name}}</p>
-        {% endif %}
-        <p class="message__date">{{message.created}}</p>
-        <div class="message__body">{{message.body|linebreaksbr}}</div>
-    </div>
+
+<div class="container">
+  <div class="row" style="padding-top: 5rem;">
+    <main class="messagePage my-xl">
+      <div class="content-box">
+        <div class="message">
+          <a class="btn btn-secondary" style="margin-bottom: 1rem;" href="{% url 'inbox' %}"><span class="fa-solid fa-arrow-left" ></span> Back to Inbox</a>
+          <p class="r-type">{{message.request_type}}</p>
+          <span class="message-header">Reason for Transfusion*</span><h2 class="message__subject">{{message.subject}}</h4>
+          <span class="message-header">Patient details*</span><div class="message__body"> <p class="b-group">Blood group: {{request.user.profile.blood_group}}</p> {{message.body|linebreaksbr}}</div>
+          <span class="message-header">Location*</span><div class="message__body"><span class="fa-solid fa-location" ></span> {{message.location}}</div>
+          <span class="message-header">Contact information*</span><address class="message__body info">{{message.contact_information|linebreaksbr}}</address>
+
+          {% if message.sender %}
+          <span>Sent by: </span><a href="{% url 'user-profile' message.sender.id  %}" class="message__author">{{message.name}}</a>
+          {% else %}
+          <p class="message__author">{{message.name}}</p>
+          {% endif %}
+          <p class="message__date">{{message.created}}</p>
+        </div>
+      </div>
+    </main>
   </div>
-</main>
+</div>
 {% endblock content %}

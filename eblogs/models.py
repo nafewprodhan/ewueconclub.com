@@ -17,18 +17,19 @@ class EblogCategorie(models.Model):
 
 
 class Eblog(models.Model):
-    blogger = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
     eblog_cats = models.ForeignKey(EblogCategorie, on_delete=models.DO_NOTHING)
-
+    submitted_by = models.ForeignKey(Profile, on_delete=DO_NOTHING, null=True, blank=True)
+    blog_authors = models.ManyToManyField('EblogAuthor')
+    other_authors_username = models.CharField(max_length=3000, null=True, blank=True)
     title = models.CharField(max_length=3000)
     body = models.TextField()
     thumbnail = models.ImageField(upload_to='blog-thumbnail/')
-
+    docx_drive_link = models.CharField(max_length=5000, null=True, blank=True)
     eblog_tags = models.ManyToManyField('EblogTag')
-
+    keywords = models.CharField(max_length=5000, null=True, blank=True)
     published_timestamp = models.DateTimeField()
     is_published = models.BooleanField(default=False, null=True, blank=True)
-
+    view_count = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
@@ -38,7 +39,7 @@ class Eblog(models.Model):
         return str(self.title)
 
     class Meta:
-        ordering = ['-published_timestamp']
+        ordering = ['-view_count', '-published_timestamp']
 
 
 class EblogTag(models.Model):
@@ -63,3 +64,8 @@ class EblogReview(models.Model):
     def __str__(self):
         return str(self.blog)
 
+class EblogAuthor(models.Model):
+    author = models.ForeignKey(Profile, on_delete=models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.author)

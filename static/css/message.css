@@ -1,0 +1,72 @@
+body {
+    background: linear-gradient(to right top, #cc00bb, #0050e6, #aa00cc) !important;
+    position: relative;
+    z-index: -1000;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background: #ffffffd7;
+    z-index: -1000;
+}
+
+.message__subject {
+    padding: 0.3rem 0.4rem;
+    font-family: 'Volte Semibold';
+    font-size: 1.5rem;
+    border-radius: 6px;
+    background-color: #ffe4e6;
+    color: var(--logo-secondary-color);
+}
+
+.message__body {
+    padding: 0.3rem 0.6rem;
+    background-color: rgba(255, 255, 255, 0.589);
+    font-size: 1.2rem;
+    border-radius: 6px;
+}
+
+.r-type {
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    background-color: var(--logo-secondary-color);
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: 'Volte Bold';
+    font-size: 1.5rem;
+}
+
+.b-group {
+    font-size: 1.2rem;
+    font-family: 'Volte Semibold';
+    color: var(--logo-secondary-color);
+    margin: 0;
+    margin-bottom: 0.2rem;
+}
+
+.info {
+    font-size: 1.1rem;
+    background-color: #ffe9f2;
+    color: var(--logo-secondary-color);
+    font-family: 'Volte Medium';
+}
+
+.message-header {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+    font-family: 'Volte Medium';
+    color: var(--logo-main-color);
+}
+
+.message__author {
+    font-family: 'Volte Semibold';
+    font-size: 1.3rem;
+    color: var(--logo-secondary-color);
+}

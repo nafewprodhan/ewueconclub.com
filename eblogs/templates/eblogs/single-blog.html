@@ -30,7 +30,10 @@
             <div style="display: flex; flex-direction:column; gap:0;" id="event-details-info-container">
                 <h1 class="s-event-name">{{blog.title}}</h1>
                 <div class="author-info">
-                    <p><i class="fa-solid fa-user"></i> <a href="{% url 'user-profile' blog.blogger.id %}">{{ blog.blogger }}</a></p>
+                    <p><i class="fa-solid fa-user"></i> 
+                        {% for author in blog.blog_authors.all %}
+                        <a style="color: var(--logo-secondary-color);" href="{% url 'user-profile' author.author.id %}"> {{author}}; </a>
+                        {% endfor %}</p>
                     <p><b>Published: </b><i class="fa-solid fa-clock"></i> {{ blog.published_timestamp }}</p>
                 </div>
                 <div style="padding: 1rem !important;" id="s-event-content-div">

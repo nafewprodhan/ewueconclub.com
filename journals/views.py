@@ -24,6 +24,8 @@ def journals(request):
 
 def journal(request, pk):
     journal = Journals.objects.get(id=pk)
+    journal.view_count = journal.view_count + 1
+    journal.save()
     journal_cat = journal.all_journals
     form = JournalReviewForm()
     related_journals = Journals.objects.filter(all_journals=journal_cat)

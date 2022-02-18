@@ -1,14 +1,13 @@
 from django.db.models.signals import post_save, post_delete
-from django.dispatch import receiver
 
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Message, Profile
 
 from django.core.mail import send_mail
 from django.conf import settings
 
-# @receiver(post_save, sender=Profile)
-
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
 
 def createProfile(sender, instance, created, **kwargs):
     if created:
@@ -50,7 +49,17 @@ def deleteUser(sender, instance, **kwargs):
     except:
         pass
 
+def sendBloodMail(sender, instance, created, **kwargs):
+    
+        if created:
+            bmessage = instance
+            context = {'bmessage': bmessage}
+            html_template = get_template("user/blood-email-template.html").render(context)
+            email = EmailMultiAlternatives(subject="Blood request - " + str(bmessage.subject), from_email=settings.EMAIL_HOST_USER, to=[bmessage.recipient.email])
+            email.attach_alternative(html_template, 'text/html')
+            email.send()
 
 post_save.connect(createProfile, sender=User)
 post_save.connect(updateUser, sender=Profile)
 post_delete.connect(deleteUser, sender=Profile)
+post_save.connect(sendBloodMail, sender=Message)

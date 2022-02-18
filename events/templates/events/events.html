@@ -64,7 +64,7 @@
                 <div class="row">
                 <div id="up-event-wrapper">
                 <div class="up-event-w-wraper">
-                <div class="col-lg-12 col-12 m-auto up-event-timer-container">
+                <div class="col-lg-12 col-12 m-auto up-event-timer-container margin-fix">
                     <div class="d-flex justify-content-between align-items-center  custom-flex-gap">
                         <a class="up-event-btn-div-a" href="#">Upcoming Event</a>
                     
@@ -137,10 +137,10 @@
                 <a href="{% url 'event' event.id %}" class="single-item-container">
                     <img class="img-fluid" src="{{event.banner.url}}" alt="">
                     <div class="item-info-container">
-                        <h1 style="color: purple !important;" class="item-title">{{event.title}}</h1>
+                        <h1 style="color: var(--logo-main-color);" class="item-title">{{event.title}}</h1>
                         <div class="item-extra-info">
                             <p class="item-date"><i class="fa-solid fa-calendar-days"></i><i> {{event.start_date_time}}</i></p>
-                            <p style="background-color: purple !important; color:white;" class="item-timing-label">{{event.event_satus}}</p>
+                            <p style="background-color: var(--logo-main-color) !important; color:white;" class="item-timing-label">{{event.event_satus}}</p>
                         </div>
                         <p class="item-desription">{{event.body|slice:'0:160'|safe}}...</p>
                         <div class="item-tags">

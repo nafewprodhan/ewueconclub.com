@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <style>
+
+            :root {
+                --logo-main-color: #064970 !important;
+                --logo-secondary-color: #ec1e3e !important;
+            }
+
+            .message__subject {
+                padding: 0.3rem 0.4rem;
+                font-family: 'Volte Semibold';
+                font-size: 1.5rem;
+                border-radius: 6px;
+                background-color: #ffe4e6;
+                color: var(--logo-secondary-color);
+            }
+            
+            .message__body {
+                padding: 0.3rem 0.6rem;
+                background-color: #ffffff96;
+                font-size: 1.2rem;
+                border-radius: 6px;
+            }
+            
+            .r-type {
+                padding: 0.3rem 0.8rem;
+                border-radius: 10px;
+                background-color: var(--logo-secondary-color);
+                color: white;
+                letter-spacing: 2px;
+                text-align: center;
+                font-family: 'Volte Bold';
+                font-size: 1.5rem;
+            }
+            
+            .b-group {
+                font-size: 1.2rem;
+                font-family: 'Volte Semibold';
+                color: var(--logo-secondary-color);
+                margin: 0;
+                margin-bottom: 0.2rem;
+            }
+            
+            .info {
+                font-size: 1.1rem;
+                background-color: #ffe9f2;
+                color: var(--logo-secondary-color);
+                font-family: 'Volte Medium';
+            }
+            
+            .message-header {
+                display: block;
+                margin-top: 0.8rem;
+                font-size: 1.1rem;
+                font-family: 'Volte Medium';
+                color: var(--logo-main-color);
+            }
+            
+            .message__author {
+                font-family: 'Volte Semibold';
+                font-size: 1.3rem;
+                color: var(--logo-secondary-color);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <main class="messagePage my-xl">
+            <div class="content-box">
+                <div class="message">
+                <p style="
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 10px;
+                    background-color: #064970;
+                    color: white;
+                    letter-spacing: 2px;
+                    text-align: center;
+                    font-family: 'Volte Bold';
+                    font-size: 1.5rem;
+                " class="r-type">{{bmessage.request_type}}</p>
+
+                <span style="
+                    display: block;
+                    margin-top: 0.8rem;
+                    font-size: 1.1rem;
+                    font-family: 'Volte Medium';
+                    color: #064970;
+                " class="message-header">Reason for Transfusion*</span>
+
+                <h2 style="
+                    padding: 0.3rem 0.4rem;
+                    font-family: 'Volte Semibold';
+                    font-size: 1.5rem;
+                    border-radius: 6px;
+                    background-color: #ffe4e6;
+                    color: #ec1e3e;
+                " class="message__subject">{{bmessage.subject}}</h4>
+
+                <span style="
+                    display: block;
+                    margin-top: 0.8rem;
+                    font-size: 1.1rem;
+                    font-family: 'Volte Medium';
+                    color: #064970;
+                
+                " class="message-header">Patient details*</span><div class="message__body"> <p style="
+                        font-size: 1.2rem;
+                        font-family: 'Volte Semibold';
+                        color: #ec1e3e;
+                        margin: 0;
+                        margin-bottom: 0.2rem;
+                    " class="b-group">Blood group: {{bmessage.recipient.blood_group}}</p> {{bmessage.body|linebreaksbr}}</div>
+                <span style="
+                    display: block;
+                    margin-top: 0.8rem;
+                    font-size: 1.1rem;
+                    font-family: 'Volte Medium';
+                    color: var(--logo-main-color);
+                
+                " class="message-header">Location*</span><div style="
+                    padding: 0.3rem 0.6rem;
+                    background-color: #ffffff96;
+                    font-size: 1.2rem;
+                    border-radius: 6px;
+                " class="message__body"><span class="fa-solid fa-location" ></span> {{bmessage.location}}</div>
+                <span style="
+                    display: block;
+                    margin-top: 0.8rem;
+                    font-size: 1.1rem;
+                    font-family: 'Volte Medium';
+                    color: var(--logo-main-color);
+                
+                " class="message-header">Contact information*</span><address style="
+                    padding: 0.3rem 0.6rem;
+                    border-radius: 6px;
+                    font-size: 1.1rem;
+                    background-color: #ffe9f2;
+                    color: var(--logo-secondary-color);
+                    font-family: 'Volte Medium';
+                "class="message__body info">{{bmessage.contact_information|linebreaksbr}}</address>
+                    
+                {% if bmessage.sender %}
+                <span>Sent by: </span><a href="{% url 'user-profile' bmessage.sender.id  %}" class="message__author">{{bmessage.name}}</a>
+                {% else %}
+                <p class="message__author">{{bmessage.name}}</p>
+                {% endif %}
+                <p class="message__date">{{bmessage.created}}</p>
+                </div>
+            </div>
+            </main>
+          </div>
+    </body>
+</html>

@@ -33,7 +33,7 @@ body::after {
     width: 100%;
     height: 200px;
     max-height: 200px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .b-cat {
@@ -41,19 +41,18 @@ body::after {
     font-family: 'Volte Medium';
     color: white;
     border-radius: 4px;
-    padding: 0.2rem 0.4rem;
-    /* margin-bottom: 0.3rem; */
+    padding: 0.4rem 0.4rem;
     background-color: var(--logo-secondary-color);
 }
 
 .blog-header {
-    margin: 0;
+    margin-top: 0.7rem;
+    font-size: 1.4rem;
+    font-family: 'Volte Medium';
+    line-height: 1.2;
 }
 
 .blog-header a {
-    font-size: 1.3rem;
-    font-weight: bolder;
-    /* margin-top: 0.4rem; */
     text-decoration: none;
     color: var(--logo-main-color);
 }
